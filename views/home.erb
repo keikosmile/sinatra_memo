@@ -1,10 +1,9 @@
 <h2>ホーム</h2>
-<form action="/new" method="GET">
+
+<form action="/new" method="get">
   <input type="submit" value="新規作成">
 </form>
-<ul>
-  <% @memo_num.times do |i| %>
-    <li><a href="/memos/<%= i %>">メモ<%= i %></a></li>
-  <% end %>
-</ul>
-<a href="/about"><%= @title %>とは</a>
+<% settings.md.mda.each_index do |i| %>
+  <li><a href="/memos/<%= i %>"><%= settings.md.get_memo(i).title %></a></li>
+<% end %>
+<a href="/about"><%= $title %>とは</a>

@@ -1,11 +1,18 @@
 <h2>表示</h2>
 タイトル:<br>
-メモ<%= @id %>
+<%= settings.md.get_memo(@id).title %>
+<br>
 本文:<br>
-<form action="/memos/<%= @id %>/edit" method="GET">
+<%= settings.md.get_memo(@id).content %>
+<br>
+更新日時:<br>
+<%= settings.md.get_memo(@id).date %>
+<br>
+<form action="/memos/<%= @id %>/edit" method="get">
   <input type="submit" value="変更">
 </form>
-<form action="/memos/<%= @id %>/delete" method="POST">
+<form action="/" method="delete">
+  <input type="hidden" value=<% @id %>>
   <input type="submit" value="削除">
 </form>
 <a href="/">ホーム</a>
