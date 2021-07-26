@@ -1,4 +1,5 @@
 require 'sinatra'
+# 再起動を不要にする
 require 'sinatra/reloader'
 
 class Memo
@@ -23,7 +24,6 @@ class MemoDatabase
   end
 
   def insert(title, content)
-    # id は 0 から始まる
     memo = Memo.new(title, content, Time.now)
     @mda.push(memo)
   end
@@ -50,41 +50,45 @@ get '/' do
   erb :home
 end
 
-# edit で変更後、home表示
-post '/' do
-  settings.md.edit(params[:id].to_i, params[:title], params[:content])
-  erb :home
-end
-
-delete '/' do
-  settings.md.delete(params[:id])
-  erb :home
-end
-
-# new表示
+# メモのnew表示
 get '/new' do
   erb :new
 end
 
-# new表示後、insertし、home表示
+# new表示後、DBへinsertし、'/'へリダイレクト
 post '/new' do
   # settingsヘルパーを利用し、リクエストスコープからアプリケーションスコープにアクセス
   settings.md.insert(params[:title], params[:content])
-  erb :home
+  redirect '/'
 end
 
-# 各メモ show表示
+# 各メモのshow表示
 get '/memos/:id' do
   @id = params[:id].to_i
   erb :show
 end
 
-# show表示後、各メモの edit表示
+# 各メモのshow表示後、DBを削除し、'/'へリダイレクト
+delete '/memos/:id' do
+  @id = params[:id].to_i
+  settings.md.delete(@id)
+  redirect '/'
+end
+
+# 各メモのshow表示後、edit表示
 get '/memos/:id/edit' do
   @id = params[:id].to_i
   erb :edit
 end
 
+# 各メモのedit表示で変更後、DBを変更し、'/'へリダイレクト
+post '/memos/:id/edit' do
+  @id = params[:id].to_i
+  settings.md.edit(@id, params[:title], params[:content])
+  redirect '/'
+end
+
+# about表示
 get '/about' do
   erb :about
 end

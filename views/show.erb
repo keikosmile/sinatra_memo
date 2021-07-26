@@ -11,8 +11,7 @@
 <form action="/memos/<%= @id %>/edit" method="get">
   <input type="submit" value="変更">
 </form>
-<form action="/" method="delete">
-  <input type="hidden" value=<% @id %>>
+<form action="/memos/<%= @id %>" method="delete">
   <input type="submit" value="削除">
 </form>
 <a href="/">ホーム</a>
