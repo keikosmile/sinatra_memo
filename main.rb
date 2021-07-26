@@ -35,7 +35,7 @@ class MemoDatabase
   end
 
   def delete(id)
-    @mda[id].pop
+    @mda.delete_at(id)
   end
 end
 
@@ -69,7 +69,7 @@ get '/memos/:id' do
 end
 
 # 各メモのshow表示後、DBを削除し、'/'へリダイレクト
-delete '/memos/:id' do
+post '/memos/:id' do
   @id = params[:id].to_i
   settings.md.delete(@id)
   redirect '/'
