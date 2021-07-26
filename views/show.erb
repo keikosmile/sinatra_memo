@@ -1,0 +1,11 @@
+<h2>表示</h2>
+タイトル:<br>
+メモ<%= @id %>
+本文:<br>
+<form action="/memos/<%= @id %>/edit" method="GET">
+  <input type="submit" value="変更">
+</form>
+<form action="/memos/<%= @id %>/delete" method="POST">
+  <input type="submit" value="削除">
+</form>
+<a href="/">ホーム</a>
