@@ -71,7 +71,7 @@ get '/memos/:memo_id/edit' do
 end
 
 # 各メモの edit 表示後、result_hash を変更し、'/'へリダイレクト
-put '/memos/:memo_id' do
+patch '/memos/:memo_id' do
   @memo_id = params[:memo_id].to_i
   # 配列の対象ハッシュを変更する
   settings.result_hash[@memo_id][:title] = params[:title]

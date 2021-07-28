@@ -4,7 +4,7 @@
   <input type="text" name="title" value="<%= settings.result_hash[@memo_id][:title] %>"><br>
   本文:<br>
   <textarea name="body" cols="60" rows="5"><%= settings.result_hash[@memo_id][:body] %></textarea><br>
-  <input type="hidden" name="_method" value="PUT">
+  <input type="hidden" name="_method" value="PATCH">
   <input type="submit" value="変更">
 </form>
 <a href="/">ホーム</a>
