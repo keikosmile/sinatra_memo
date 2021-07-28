@@ -11,6 +11,11 @@ $database_file = './database.json'
 # コンフィギュレーション: アプリケーションスコープ
 configure do
   set :result_hash, []
+  # データベースファイルが存在しなければ作成する
+  unless File.exist?($database_file)
+    File.open($database_file, 'w') {
+    }
+  end
 end
 
 # get, post の処理: リクエストスコープ
@@ -20,19 +25,19 @@ get '/' do
   # データ操作した後、result_hash = [] or != []
   if !settings.result_hash.empty?
     # データベースファイルへ書き込む
-    File.open($database_file, "w") do |file|
+    File.open($database_file, 'w') {|file|
       JSON.dump(settings.result_hash, file)
-    end
+    }
   end
   # データベースファイルが空でなければ、それぞれのメモを表示する
   # データベースファイルが空であれば、メモは1つも表示しない
   unless FileTest.zero?($database_file)
     # ファイルを開き、ファイルオブジェクトを生成する
-    File.open("database.json") do |file|
+    File.open($database_file) {|file|
       # JSON形式のファイルオブジェクトを、JSON形式の文字列に変換し、Rubyオブジェクト(ハッシュ）に変換する
       # settingsヘルパーを利用し、リクエストスコープからアプリケーションスコープにアクセス
       settings.result_hash = JSON.parse(file.read, symbolize_names: true)
-    end
+    }
   end
   erb :index
 end
