@@ -4,36 +4,35 @@ require 'sinatra/reloader'
 # JSONモジュールを利用する
 require 'json'
 
-# グローバル変数
-$application_title = 'メモアプリ'
-$database_file = './database.json'
-
 # コンフィギュレーション: アプリケーションスコープ
 configure do
+  set :app_title, 'メモアプリ'
+  set :json_file, './database.json'
   set :result_hash, []
   # データベースファイルが存在しなければ作成する
-  unless File.exist?($database_file)
-    File.open($database_file, 'w') {
+  unless File.exist?(settings.json_file)
+    File.open(settings.json_file, 'w') {
     }
   end
 end
 
-# get, post の処理: リクエストスコープ
+# ヘルパーでエスケープ処理を定義
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
+end
+
+# get, post, patch, delete の処理: リクエストスコープ
 # index表示
 get '/' do
-  # 初めて起動した時、result_hash = []
-  # データ操作した後、result_hash = [] or != []
-  if !settings.result_hash.empty?
-    # データベースファイルへ書き込む
-    File.open($database_file, 'w') {|file|
-      JSON.dump(settings.result_hash, file)
-    }
-  end
-  # データベースファイルが空でなければ、それぞれのメモを表示する
+  File.open(settings.json_file, 'w') {|file|
+    JSON.dump(settings.result_hash, file)
+  }
   # データベースファイルが空であれば、メモは1つも表示しない
-  unless FileTest.zero?($database_file)
+  unless FileTest.zero?(settings.json_file)
     # ファイルを開き、ファイルオブジェクトを生成する
-    File.open($database_file) {|file|
+    File.open(settings.json_file) {|file|
       # JSON形式のファイルオブジェクトを、JSON形式の文字列に変換し、Rubyオブジェクト(ハッシュ）に変換する
       # settingsヘルパーを利用し、リクエストスコープからアプリケーションスコープにアクセス
       settings.result_hash = JSON.parse(file.read, symbolize_names: true)
@@ -50,7 +49,7 @@ end
 # new表示後、result_hash へinsertし、'/'へリダイレクト
 post '/memos/new' do
   # 新しいハッシュを作成し、配列の最後へ挿入する
-  hash = {title: params[:title], body: params[:body]}
+  hash = {title: "#{h(params[:title])}", body: "#{h(params[:body])}"}
   settings.result_hash.push(hash)
   redirect '/'
 end
@@ -79,12 +78,18 @@ end
 patch '/memos/:memo_id' do
   @memo_id = params[:memo_id].to_i
   # 配列の対象ハッシュを変更する
-  settings.result_hash[@memo_id][:title] = params[:title]
-  settings.result_hash[@memo_id][:body] = params[:body]
+  settings.result_hash[@memo_id][:title] = "#{h(params[:title])}"
+  settings.result_hash[@memo_id][:body] = "#{h(params[:body])}"
   redirect '/'
 end
 
 # about表示
 get '/about' do
   erb :about
+end
+
+# エラーハンドリング
+# 未検出(Not Found)
+not_found do
+  '404エラー：ファイルが存在しません'
 end
