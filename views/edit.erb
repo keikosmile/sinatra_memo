@@ -1,9 +1,10 @@
 <h2>変更</h2>
-<form action="/memos/<%= @id %>/edit" method="post">
+<form action="/memos/<%= @memo_id %>" method="post">
   タイトル:<br>
-  <input type="text" name="title" value="<%= settings.md.get_memo(@id).title %>"><br>
+  <input type="text" name="title" value="<%= settings.result_hash[@memo_id][:title] %>"><br>
   本文:<br>
-  <textarea name="content" cols="60" rows="5"><%= settings.md.get_memo(@id).content %></textarea><br>
+  <textarea name="body" cols="60" rows="5"><%= settings.result_hash[@memo_id][:body] %></textarea><br>
+  <input type="hidden" name="_method" value="PUT">
   <input type="submit" value="変更">
 </form>
 <a href="/">ホーム</a>

@@ -1,0 +1,12 @@
+<h2>ホーム</h2>
+
+<form action="/memos/new" method="get">
+  <input type="submit" value="新規作成">
+</form>
+<% settings.result_hash.each_with_index do |hash, index| %>
+  <% memo_id = index %>
+  <% title = hash[:title] %>
+  <% body = hash[:body] %>
+  <li><a href="/memos/<%= memo_id %>"><%= title %></a></li>
+<% end %>
+<a href="/about"><%= $application_title %>とは</a>

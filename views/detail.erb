@@ -1,0 +1,15 @@
+<h2>表示</h2>
+タイトル:<br>
+<%= settings.result_hash[@memo_id][:title] %>
+<br>
+本文:<br>
+<%= settings.result_hash[@memo_id][:body] %>
+<br>
+<form action="/memos/<%= @memo_id %>/edit" method="get">
+  <input type="submit" value="変更">
+</form>
+<form action="/memos/<%= @memo_id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="削除">
+</form>
+<a href="/">ホーム</a>
