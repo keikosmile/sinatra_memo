@@ -5,15 +5,21 @@
 ## 1. ファイルをダウンロードする
 ### ファイル構成
 - public/
+  - images/
+      - ico_pagetop.png
+      - memo.jpg
+  - reset.css
   - style.css
 - views/
   - about.erb
   - detail.erb
   - edit.erb
+  - error.erb
   - index.erb
   - layout.erb
   - new.erb
 - .gitignore
+- .rubocop.yml
 - database.json (初めてWebアプリケーションを実行後、作成される)
 - Gemfile
 - main.rb
