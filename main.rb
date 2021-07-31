@@ -1,7 +1,10 @@
+# 文字列をimmutable（破壊的変更不可）にする
+# frozen_string_literal: true
+
 require 'sinatra'
-# 再起動を不要にする
+# main.rb の再起動を不要にする
 require 'sinatra/reloader'
-# JSONモジュールを利用する
+# jsonモジュールを利用する
 require 'json'
 
 # コンフィギュレーション: アプリケーションスコープ
@@ -10,10 +13,10 @@ configure do
   set :json_file, './database.json'
   set :result_hash, []
   set :reflesh, true
-  # データベースファイルが存在しなければ作成する
+  # jsonファイルが存在しなければ、作成する
   unless File.exist?(settings.json_file)
-    File.open(settings.json_file, 'w') {
-    }
+    File.open(settings.json_file, 'w') do
+    end
   end
 end
 
@@ -24,25 +27,24 @@ helpers do
   end
 end
 
-# get, post, patch, delete の処理: リクエストスコープ
+# HTMLメソッド: リクエストスコープ
 # index表示
 get '/' do
-  # 再起動後初めての時は書き込まない
+  # 再起動後初めての時は、jsonファイルに書き込まない
   unless settings.reflesh
     # Rubyオブジェクト（ハッシュ）をデータベースファイルへ書き込む
-    File.open(settings.json_file, 'w') {|file|
+    File.open(settings.json_file, 'w') do |file|
       JSON.dump(settings.result_hash, file)
-    }
+    end
   end
   settings.reflesh = false
   # データベースファイルが空であれば、メモは1つも画面に表示しない
   unless FileTest.zero?(settings.json_file)
-    # ファイルを開き、ファイルオブジェクトを生成する
-    File.open(settings.json_file) {|file|
-      # JSON形式のファイルオブジェクトを、JSON形式の文字列に変換し、Rubyオブジェクト(ハッシュ）に変換する
-      # settingsヘルパーを利用し、リクエストスコープからアプリケーションスコープにアクセス
+    # ファイルを開き、json形式のファイルオブジェクトを生成する
+    File.open(settings.json_file) do |file|
+      # json形式のファイルオブジェクトを、json形式の文字列に変換し、Rubyオブジェクト(ハッシュ）に変換する
       settings.result_hash = JSON.parse(file.read, symbolize_names: true)
-    }
+    end
   end
   erb :index
 end
@@ -55,7 +57,9 @@ end
 # new表示後、result_hash へinsertし、'/'へリダイレクト
 post '/memos/new' do
   # 新しいハッシュを作成し、配列の最後へ挿入する
-  hash = {title: "#{h(params[:title])}", body: "#{h(params[:body])}"}
+  title = h(params[:title])
+  body = h(params[:body])
+  hash = { title: title, body: body }
   settings.result_hash.push(hash)
   redirect '/'
 end
@@ -84,8 +88,10 @@ end
 patch '/memos/:memo_id' do
   @memo_id = params[:memo_id].to_i
   # 配列の対象ハッシュを変更する
-  settings.result_hash[@memo_id][:title] = "#{h(params[:title])}"
-  settings.result_hash[@memo_id][:body] = "#{h(params[:body])}"
+  title = h(params[:title])
+  body = h(params[:body])
+  settings.result_hash[@memo_id][:title] = title
+  settings.result_hash[@memo_id][:body] = body
   redirect '/'
 end
 
