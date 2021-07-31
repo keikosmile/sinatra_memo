@@ -1,12 +1,59 @@
-<h2>ホーム</h2>
+<header id="pageHead">
+  <div id="pageHeadTitle">
+    <div id="siteTitleText">
+      <h1 id="siteTitle"><%= settings.app_title %></h1>
+       <p id="catchcopy">メモ帳として使えるメモアプリです。</p>
+    </div>
+    <div id="siteTitleImage">
+      <img src="/images/memo.jpg" alt="" width="50" height="55" >
+    </div>
+  </div>
 
-<form action="/memos/new" method="get">
-  <input type="submit" value="新規作成">
-</form>
-<% settings.result_hash.each_with_index do |hash, index| %>
-  <% memo_id = index %>
-  <% title = hash[:title] %>
-  <% body = hash[:body] %>
-  <li><a href="/memos/<%= memo_id %>"><%= title %></a></li>
-<% end %>
-<a href="/about"><%= settings.app_title %>とは</a>
+  <nav id="localNavi">
+    <ul>
+      <li><a class="current" href="/" >ホーム</a></li>
+      <li><a href="/about">アプリについて</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="detailHead">
+  <h1 class="pageTitle">ホーム</h1>
+</section>
+
+<section>
+  <section>
+    <table>
+
+      <thead>
+        <tr>
+          <th>メモID</th>
+          <th>タイトル</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% settings.result_hash.each_with_index do |hash, index| %>
+          <% memo_id = index %>
+          <% title = hash[:title] %>
+          <% body = hash[:body] %>
+          <tr>
+            <th><%= memo_id %></th>
+            <td><a href="/memos/<%= memo_id %>"><%= title %></a></td>
+            <td><%= body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  </section>
+
+  <section>
+    <form action="/memos/new" method="get">
+      <input type="submit" value="メモ新規作成">
+    </form>
+  </section>
+
+  <p class="pagetop"><a href="#page">ページの先頭へ戻る</a></p>
+</section>

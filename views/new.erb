@@ -1,9 +1,38 @@
-<h2>新規作成</h2>
-<form action="/memos/new" method="post">
-  タイトル:<br>
-  <input type="text" name="title" value=""><br>
-  本文:<br>
-  <textarea name="body" cols="60" rows="5" value=""></textarea><br>
-  <input type="submit" value="保存">
-</form>
-<a href="/">ホーム</a>
+<header id="pageHead">
+  <div id="pageHeadTitle">
+    <div id="siteTitleText">
+      <h1 id="siteTitle"><%= settings.app_title %></h1>
+      <p id="catchcopy">メモ帳として使えるメモアプリです。</p>
+    </div>
+    <div id="siteTitleImage">
+      <img src="/images/memo.jpg" alt="" width="50" height="55" >
+    </div>
+  </div>
+
+  <nav id="localNavi">
+    <ul>
+      <li><a href="/" >ホーム</a></li>
+      <li><a href="/about">アプリについて</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="detailHead">
+  <h1 class="pageTitle">メモ新規作成</h1>
+</section>
+
+<section>
+  <form action="/memos/new" method="post">
+    <section>
+      <h2>タイトル</h2>
+      <input type="text" name="title" value="" required>
+    </section>
+
+    <section>
+      <h2>内容</h2>
+      <textarea name="body" cols="60" rows="5" value=""></textarea>
+    </section>
+
+    <input type="submit" value="メモ保存">
+  </form>
+</section>

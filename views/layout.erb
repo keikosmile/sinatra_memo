@@ -3,10 +3,21 @@
   <head>
     <meta charset="UTF-8"/>
     <title><%= $title %></title>
-    <link rel="stylesheet" type="text/css" href="/style.css" >
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/style.css?v=2">
   </head>
+
   <body>
-    <h1><%= settings.app_title %></h1>
-    <%= yield %>
+    <div id="page">
+      <section class="detailBody">
+
+        <%= yield %>
+
+        <footer id="pageFoot">
+          <p id="copyright"><small>Copyright&copy; 2021 keikosmile All Rights Reserved.</small></p>
+        </footer>
+
+      </section>
+    </div>
   </body>
 </html>

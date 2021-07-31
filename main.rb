@@ -9,6 +9,7 @@ configure do
   set :app_title, 'メモアプリ'
   set :json_file, './database.json'
   set :result_hash, []
+  set :reflesh, true
   # データベースファイルが存在しなければ作成する
   unless File.exist?(settings.json_file)
     File.open(settings.json_file, 'w') {
@@ -26,10 +27,15 @@ end
 # get, post, patch, delete の処理: リクエストスコープ
 # index表示
 get '/' do
-  File.open(settings.json_file, 'w') {|file|
-    JSON.dump(settings.result_hash, file)
-  }
-  # データベースファイルが空であれば、メモは1つも表示しない
+  # 再起動後初めての時は書き込まない
+  unless settings.reflesh
+    # Rubyオブジェクト（ハッシュ）をデータベースファイルへ書き込む
+    File.open(settings.json_file, 'w') {|file|
+      JSON.dump(settings.result_hash, file)
+    }
+  end
+  settings.reflesh = false
+  # データベースファイルが空であれば、メモは1つも画面に表示しない
   unless FileTest.zero?(settings.json_file)
     # ファイルを開き、ファイルオブジェクトを生成する
     File.open(settings.json_file) {|file|
@@ -91,5 +97,5 @@ end
 # エラーハンドリング
 # 未検出(Not Found)
 not_found do
-  '404エラー：ファイルが存在しません'
+  erb :error
 end

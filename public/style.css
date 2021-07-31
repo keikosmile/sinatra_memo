@@ -1,3 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+
+/* body */
 body {
-  padding: 30px;
+  color: #333333;
+  padding: 32px 0;
+  font-family: sans-serif;
 }
+
+#page {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* ページヘッダー */
+#pageHead #siteTitle {
+  font-size: 30px;
+  line-height: 1.2;
+  margin-bottom: 0;
+  font-family: 'Yusei Magic', sans-serif;
+}
+
+#pageHead #catchcopy {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 5px;
+}
+
+#pageHead #pageHeadTitle {
+  margin-bottom: 30px;
+  display: block;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+#pageHead #siteTitleText {
+  width: 250px;
+}
+
+/* ローカルナビ */
+#pageHead #localNavi {
+  border: solid #CCCCCC;
+  border-width: 1px 0;
+  padding: 10px 0;
+}
+
+#pageHead #localNavi ul {
+  display: flex;
+  flex-direction: row;
+}
+
+#pageHead #localNavi ul li {
+  flex-grow: 1;
+  border-left: solid 1px #CCCCCC;
+  padding: 0 10px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.429;
+}
+
+#pageHead #localNavi ul li:first-child {
+  border-left: none;
+}
+
+#pageHead #localNavi ul li a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+}
+
+#pageHead #localNavi ul li a:hover,
+#pageHead #localNavi ul li a.current {
+  background-color: #F2F2E5;
+}
+
+/* ページフッター */
+#pageFoot {
+  border-top: solid 1px #CCCCCC;
+  margin-top: 15px;
+}
+
+#pageFoot #copyright small {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* 表 */
+table {
+  font-size: 16px;
+  line-height: 1.375;
+  border: 1px solid #CCCCCC;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th,
+table td {
+  border: 1px solid #CCCCCC;
+  padding: 5px 10px;
+}
+
+table th {
+  background-color: #EEEEEE;
+}
+
+table tbody th {
+  text-align: right;
+}
+
+/* リンク */
+a {
+  color: #999966;
+}
+
+a:hover {
+  color: #996600;
+}
+
+/* 見出し */
+.pageTitle {
+  font-size: 26px;
+  line-height: 1.231;
+  background-color: #F2F2E5;
+  padding: 5px 15px;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 1.272;
+  color: #349FA6;
+  border-bottom: solid 1px #349FA6;
+  padding: 5px;
+}
+
+/* 段落 */
+p {
+  font-size: 16px;
+  line-height: 1.375;
+}
+
+/* ページの先頭へ戻る */
+.pagetop {
+  font-size: 12px;
+  text-align: right;
+  margin-top: 30px;
+}
+
+.pagetop a {
+  background-image: url("/images/ico_pagetop.png");
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  padding-left: 10px;
+}
+
+/* 区切り線・余白 */
+.detailBody section {
+  margin: 30px 0;
+}
+
+.detailHead {
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+}
+

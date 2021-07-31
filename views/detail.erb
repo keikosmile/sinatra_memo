@@ -1,15 +1,46 @@
-<h2>表示</h2>
-タイトル:<br>
-<%= settings.result_hash[@memo_id][:title] %>
-<br>
-本文:<br>
-<%= settings.result_hash[@memo_id][:body] %>
-<br>
-<form action="/memos/<%= @memo_id %>/edit" method="get">
-  <input type="submit" value="変更">
-</form>
-<form action="/memos/<%= @memo_id %>" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="削除">
-</form>
-<a href="/">ホーム</a>
+<header id="pageHead">
+  <div id="pageHeadTitle">
+    <div id="siteTitleText">
+      <h1 id="siteTitle"><%= settings.app_title %></h1>
+      <p id="catchcopy">メモ帳として使えるメモアプリです。</p>
+    </div>
+    <div id="siteTitleImage">
+      <img src="/images/memo.jpg" alt="" width="50" height="55" >
+    </div>
+  </div>
+
+  <nav id="localNavi">
+    <ul>
+      <li><a href="/" >ホーム</a></li>
+      <li><a href="/about">アプリについて</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="detailHead">
+  <h1 class="pageTitle">メモ表示</h1>
+</section>
+
+<section>
+  <section>
+    <h2>タイトル</h2>
+      <p><%= settings.result_hash[@memo_id][:title] %></p>
+  </section>
+
+  <section>
+    <h2>内容</h2>
+    <%= settings.result_hash[@memo_id][:body] %>
+  </section>
+
+  <section>
+    <form action="/memos/<%= @memo_id %>/edit" method="get">
+      <input type="submit" value="メモ変更">
+    </form>
+  </section>
+  <section>
+    <form action="/memos/<%= @memo_id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="メモ削除">
+    </form>
+  </section>
+</section>
