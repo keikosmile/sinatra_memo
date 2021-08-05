@@ -40,8 +40,8 @@
           <% body = hash[:body] %>
           <tr>
             <th><%= memo_id %></th>
-            <td><a href="/memos/<%= memo_id %>"><%= title %></a></td>
-            <td><%= body %></td>
+            <td><a href="/memos/<%= memo_id %>"><%= h title %></a></td>
+            <td><%= h body %></td>
           </tr>
         <% end %>
       </tbody>

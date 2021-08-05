@@ -9,6 +9,7 @@ configure do
   set :json_file, './database.json'
   set :result_hash, []
   set :reflesh, true
+  set :erb, :escape_html => true
   # jsonファイルが存在しなければ、作成する
   unless File.exist?(settings.json_file)
     FileUtils.touch(settings.json_file)
@@ -43,8 +44,8 @@ get '/memos/new' do
 end
 
 post '/memos/new' do
-  title = h(params[:title])
-  body = h(params[:body])
+  title = params[:title]
+  body = params[:body]
   hash = { title: title, body: body }
   settings.result_hash.push(hash)
   redirect '/'
@@ -68,8 +69,8 @@ end
 
 patch '/memos/:memo_id' do
   @memo_id = params[:memo_id].to_i
-  title = h(params[:title])
-  body = h(params[:body])
+  title = params[:title]
+  body = params[:body]
   settings.result_hash[@memo_id][:title] = title
   settings.result_hash[@memo_id][:body] = body
   redirect '/'

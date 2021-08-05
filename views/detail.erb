@@ -24,12 +24,12 @@
 <section>
   <section>
     <h2>タイトル</h2>
-      <p><%= settings.result_hash[@memo_id][:title] %></p>
+      <%= h settings.result_hash[@memo_id][:title] %>
   </section>
 
   <section>
     <h2>内容</h2>
-    <%= settings.result_hash[@memo_id][:body] %>
+    <%= h settings.result_hash[@memo_id][:body] %>
   </section>
 
   <section>
