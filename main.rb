@@ -15,52 +15,63 @@ end
 
 class MemoDB
   class << self
-    def read_memos
-      memos = {}
+    def read_hashes
+      hashes = {}
       File.open('./database.json') { |file|
         unless File.zero?('./database.json')
-          memos = JSON.parse(file.read)
+          hashes = JSON.parse(file.read)
         end
       }
-      return memos
+      return hashes
     end
 
-    def write_memos(result_hash)
+    def write_hashes(new_n, memos)
+      hashes= {"new_n"=>new_n,"memos"=>memos}
       File.open('./database.json', 'w') { |file|
-        JSON.dump(result_hash, file)
+        JSON.dump(hashes, file)
       }
     end
 
     def select(memo_id)
-      memos = MemoDB.read_memos
-      return memos[memo_id]
+      hashes = MemoDB.read_hashes
+      return hashes["memos"][memo_id]
     end
 
     def select_all
-      return MemoDB.read_memos
+      hashes = MemoDB.read_hashes
+      memos = {}
+      unless hashes.empty?
+        memos = hashes["memos"]
+      end
+      return memos
     end
 
     def insert(title, body)
-      memos = MemoDB.read_memos
-      memo_id = 0
-      unless memos.empty?
-        memo_id = memos.keys.max.to_i
+      hashes = MemoDB.read_hashes
+      new_n = 0
+      memos = {}
+      unless hashes.empty?
+        new_n = hashes["new_n"]
+        memos = hashes["memos"]
       end
-      memo_id += 1
-      memos[memo_id] = {"title"=>title, "body"=>body}
-      MemoDB.write_memos(memos)
+      memos[new_n + 1] = {"title"=>title, "body"=>body}
+      MemoDB.write_hashes(new_n + 1, memos)
     end
 
     def delete(memo_id)
-      memos = MemoDB.read_memos
+      hashes = MemoDB.read_hashes
+      new_n = hashes["new_n"]
+      memos = hashes["memos"]
       memos.delete(memo_id)
-      MemoDB.write_memos(memos)
+      MemoDB.write_hashes(new_n, memos)
     end
 
     def update(memo_id, title, body)
-      memos = MemoDB.read_memos
+      hashes = MemoDB.read_hashes
+      new_n = hashes["new_n"]
+      memos = hashes["memos"]
       memos[memo_id] = {"title"=>title, "body"=>body}
-      MemoDB.write_memos(memos)
+      MemoDB.write_hashes(new_n, memos)
     end
   end
 end
