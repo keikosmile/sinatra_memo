@@ -23,13 +23,18 @@
 
 <section>
   <section>
+    <h2>メモID</h2>
+    <%= @memo_id %>
+  </section>
+
+  <section>
     <h2>タイトル</h2>
-      <%= h settings.result_hash[@memo_id][:title] %>
+    <%= h @result_hash["title"] %>
   </section>
 
   <section>
     <h2>内容</h2>
-    <%= h settings.result_hash[@memo_id][:body] %>
+    <%= h @result_hash["body"] %>
   </section>
 
   <section>

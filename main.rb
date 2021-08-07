@@ -8,30 +8,65 @@ include ERB::Util
 
 configure do
   set :app_title, 'メモアプリ'
-  set :json_file, './database.json'
-  set :result_hash, []
-  set :reflesh, true
-  set :erb, :escape_html => true
-  # jsonファイルが存在しなければ、作成する
-  unless File.exist?(settings.json_file)
-    FileUtils.touch(settings.json_file)
+  unless File.exist?('./database.json')
+    FileUtils.touch('./database.json')
+  end
+end
+
+class MemoDB
+  class << self
+    def read_memos
+      memos = {}
+      File.open('./database.json') { |file|
+        unless File.zero?('./database.json')
+          memos = JSON.parse(file.read)
+        end
+      }
+      return memos
+    end
+
+    def write_memos(result_hash)
+      File.open('./database.json', 'w') { |file|
+        JSON.dump(result_hash, file)
+      }
+    end
+
+    def select(memo_id)
+      memos = MemoDB.read_memos
+      return memos[memo_id]
+    end
+
+    def select_all
+      return MemoDB.read_memos
+    end
+
+    def insert(title, body)
+      memos = MemoDB.read_memos
+      memo_id = 0
+      unless memos.empty?
+        memo_id = memos.keys.max.to_i
+      end
+      memo_id += 1
+      memos[memo_id] = {"title"=>title, "body"=>body}
+      MemoDB.write_memos(memos)
+    end
+
+    def delete(memo_id)
+      memos = MemoDB.read_memos
+      memos.delete(memo_id)
+      MemoDB.write_memos(memos)
+    end
+
+    def update(memo_id, title, body)
+      memos = MemoDB.read_memos
+      memos[memo_id] = {"title"=>title, "body"=>body}
+      MemoDB.write_memos(memos)
+    end
   end
 end
 
 get '/' do
-  # 再起動後初めての時は、jsonファイルに書き込まない
-  unless settings.reflesh
-    File.open(settings.json_file, 'w') do |file|
-      JSON.dump(settings.result_hash, file)
-    end
-  end
-  settings.reflesh = false
-  # データベースファイルが空であれば、メモは1つも画面に表示しない
-  unless FileTest.zero?(settings.json_file)
-    File.open(settings.json_file) do |file|
-      settings.result_hash = JSON.parse(file.read, symbolize_names: true)
-    end
-  end
+  @result_hash = MemoDB.select_all
   erb :index
 end
 
@@ -40,35 +75,29 @@ get '/memos/new' do
 end
 
 post '/memos/new' do
-  title = params[:title]
-  body = params[:body]
-  hash = { title: title, body: body }
-  settings.result_hash.push(hash)
+  MemoDB.insert(params[:title], params[:body])
   redirect '/'
 end
 
 get '/memos/:memo_id' do
-  @memo_id = params[:memo_id].to_i
+  @memo_id = params[:memo_id]
+  @result_hash = MemoDB.select(@memo_id)
   erb :detail
 end
 
 delete '/memos/:memo_id' do
-  @memo_id = params[:memo_id].to_i
-  settings.result_hash.delete_at(@memo_id)
+  MemoDB.delete(params[:memo_id])
   redirect '/'
 end
 
 get '/memos/:memo_id/edit' do
-  @memo_id = params[:memo_id].to_i
+  @memo_id = params[:memo_id]
+  @result_hash = MemoDB.select(@memo_id)
   erb :edit
 end
 
 patch '/memos/:memo_id' do
-  @memo_id = params[:memo_id].to_i
-  title = params[:title]
-  body = params[:body]
-  settings.result_hash[@memo_id][:title] = title
-  settings.result_hash[@memo_id][:body] = body
+  MemoDB.update(params[:memo_id], params[:title], params[:body])
   redirect '/'
 end
 
