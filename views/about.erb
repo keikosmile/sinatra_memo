@@ -1,25 +1,8 @@
-<header id="pageHead">
-  <div id="pageHeadTitle">
-    <div id="siteTitleText">
-      <h1 id="siteTitle"><%= settings.app_title %></h1>
-      <p id="catchcopy">メモ帳として使えるメモアプリです。</p>
-    </div>
-    <div id="siteTitleImage">  
-      <img src="/images/memo.jpg" alt="" width="50" height="55" >
-    </div>
-  </div>
-
-  <nav id="localNavi">
-    <ul>
-      <li><a href="/" >ホーム</a></li>
-      <li><a class="current" href="/about">アプリについて</a></li>
-    </ul>
-  </nav>
-</header>
-
-<section class="detailHead">
-  <h1 class="pageTitle"><%= settings.app_title %>とは</h1>
-</section>
+<%# <section class="detailHead"> %>
+  <h1 class="level1-heading">
+    <span class="level1-heading__inner"><%= settings.app_title %>とは</span>
+  </h1>
+<%# </section> %>
 
 <section>
   <p><%= settings.app_title %>は、作者が<a href="https://bootcamp.fjord.jp" target="new">フィヨルドブートキャンプ</a>でSinatraを学習するために作ったアプリケーションです。</p>

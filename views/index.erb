@@ -1,61 +1,38 @@
-<header id="pageHead">
-  <div id="pageHeadTitle">
-    <div id="siteTitleText">
-      <h1 id="siteTitle"><%= settings.app_title %></h1>
-      <p id="catchcopy">メモ帳として使えるメモアプリです。</p>
-    </div>
-    <div id="siteTitleImage">
-      <img src="/images/memo.jpg" alt="" width="50" height="55" >
-    </div>
-  </div>
+<h1 class="level1-heading">
+  <span class="level1-heading__inner">ホーム</span>
+</h1>
 
-  <nav id="localNavi">
-    <ul>
-      <li><a class="current" href="/" >ホーム</a></li>
-      <li><a href="/about">アプリについて</a></li>
-    </ul>
-  </nav>
-</header>
-
-<section class="detailHead">
-  <h1 class="pageTitle">ホーム</h1>
-</section>
-
-<section>
-  <section>
-    <table>
-
-      <thead>
-        <tr>
-          <th>メモID</th>
-          <th>タイトル</th>
-          <th>内容</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% unless @result_hash.empty? %>
-          <% @result_hash.each do |k, v| %>
-            <% memo_id = k %>
-            <% title = v["title"] %>
-            <% body = v["body"] %>
-            <tr>
-              <th><%= memo_id %></th>
-              <td><a href="/memos/<%= memo_id %>"><%= h title %></a></td>
-              <td><%= h body %></td>
-            </tr>
-          <% end %>
+<div id="table-top" class="cross-table">
+  <table class="cross-table__inner">
+    <thead class="cross-table__headers">
+      <tr class="cross-table__header-row">
+        <th class="cross-table__header cross-table__header--md-sticky">メモID</th>
+        <th class="cross-table__header">タイトル</th>
+        <th class="cross-table__header">内容</th>
+      </tr>
+    </thead>
+    <tbody class="cross-table__body">
+      <% unless @result_hash.empty? %>
+        <% @result_hash.each do |k, v| %>
+          <% memo_id = k %>
+          <% title = v["title"] %>
+          <% body = v["body"] %>
+          <tr class="cross-table__body-row js_table_body_row" data-href="/memos/<%= memo_id %>">
+            <td class="cross-table__text cross-table__header--md-sticky"><%= memo_id %></td>
+            <td class="cross-table__text"><%= h title %></td>
+            <td class="cross-table__text"><%= h body %></td>
+          </tr>
         <% end %>
-      </tbody>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-    </table>
-  </section>
+<form action="/memos/new" method="get">
+  <input class="rounded-btn" type="submit" value="メモ新規作成">
+</form>
 
-  <section>
-    <form action="/memos/new" method="get">
-      <input type="submit" value="メモ新規作成">
-    </form>
-  </section>
+<span class="before-icon before-icon--chevron-up">
+  <a class="table-top" href="#table-top">表の先頭へ戻る</a>
+</span>
 
-  <p class="pagetop"><a href="#page">ページの先頭へ戻る</a></p>
-</section>

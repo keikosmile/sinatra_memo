@@ -2,22 +2,66 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8"/>
-    <title><%= $title %></title>
+    <title><%= settings.app_title %></title>
     <link rel="stylesheet" href="/reset.css">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css?v=2">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/input_limit.js"></script>
+    <script src="/js/table_click.js"></script>
   </head>
 
   <body>
-    <div id="page">
-      <section class="detailBody">
+    <!-- 外側にあたる要素 -->
+    <header class="header">
+      <!-- 内側にあたる要素 -->
+      <div class="header__inner">
 
+        <!-- レイアウトの中に配置されたメディア -->
+        <div class="header__inner__media">
+          <a class="media media--link" href="/">
+            <figure class="media__img-wrapper">
+              <img class = "media__img" src="/images/memo.jpg" alt="写真：メモ">
+            </figure>
+            <div class="media__body">
+              <h3 class="media__title">
+                <%= settings.app_title %>
+              </h3>
+              <p class="media__text">
+                メモを共有しよう
+              </p>
+            </div>
+          </a>
+        </div>
+        <!-- /.header__inner__media -->
+
+        <!-- レイアウトの中に配置されたボタン -->
+        <div class="header__inner__btn">
+          <a class="btn" href="/about"><p>メモアプリとは</p></a>
+        </div>
+        <!-- /.footer__inner__btn -->
+
+      </div>
+      <!-- /.header__inner -->
+    </header>
+
+    <main>
+      <section class="content">
         <%= yield %>
-
-        <footer id="pageFoot">
-          <p id="copyright"><small>Copyright&copy; 2021 keikosmile All Rights Reserved.</small></p>
-        </footer>
-
       </section>
-    </div>
+    </main>
+
+    <footer>
+      <!-- 外側にあたる要素 -->
+      <div class="footer footer--border-top-grey">
+
+        <!-- 内側にあたる要素 -->
+        <div class="footer__inner">
+          <small class="footer-copyright">&copy; 2021 keikosmile All Rights Reserved.</small>
+        </div>
+
+      </div>
+      <!-- /.footer -->
+    </footer>
+
   </body>
 </html>

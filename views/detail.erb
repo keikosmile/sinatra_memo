@@ -1,51 +1,26 @@
-<header id="pageHead">
-  <div id="pageHeadTitle">
-    <div id="siteTitleText">
-      <h1 id="siteTitle"><%= settings.app_title %></h1>
-      <p id="catchcopy">メモ帳として使えるメモアプリです。</p>
-    </div>
-    <div id="siteTitleImage">
-      <img src="/images/memo.jpg" alt="" width="50" height="55" >
-    </div>
-  </div>
+<h1 class="level1-heading">
+  <span class="level1-heading__inner">メモ表示</span>
+</h1>
 
-  <nav id="localNavi">
-    <ul>
-      <li><a href="/" >ホーム</a></li>
-      <li><a href="/about">アプリについて</a></li>
-    </ul>
-  </nav>
-</header>
+<h2 class="level2-heading">メモID</h2>
+<%= @memo_id %>
 
-<section class="detailHead">
-  <h1 class="pageTitle">メモ表示</h1>
-</section>
+<h2 class="level2-heading">タイトル</h2>
+<%= h @result_hash["title"] %>
 
-<section>
-  <section>
-    <h2>メモID</h2>
-    <%= @memo_id %>
-  </section>
+<h2 class="level2-heading">内容</h2>
+<%= h @result_hash["body"] %>
 
-  <section>
-    <h2>タイトル</h2>
-    <%= h @result_hash["title"] %>
-  </section>
-
-  <section>
-    <h2>内容</h2>
-    <%= h @result_hash["body"] %>
-  </section>
-
-  <section>
+<ul class="horizontal-btn-list">
+  <li class="horizontal-btn-list__item">
     <form action="/memos/<%= @memo_id %>/edit" method="get">
-      <input type="submit" value="メモ変更">
+      <input class="horizontal-btn-list__btn rounded-btn btn--warning" type="submit" value="メモ変更">
     </form>
-  </section>
-  <section>
+  </li>
+  <li class="horizontal-btn-list__item">
     <form action="/memos/<%= @memo_id %>" method="post">
       <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="メモ削除">
+      <input class="horizontal-btn-list__btn rounded-btn btn--alert" type="submit" value="メモ削除">
     </form>
-  </section>
-</section>
+  </li>
+</ul>
