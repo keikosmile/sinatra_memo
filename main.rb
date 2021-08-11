@@ -3,13 +3,17 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
-
-include ERB::Util
-
+# include ERB::Util
 configure do
   set :app_title, 'メモアプリ'
   unless File.exist?('./database.json')
     FileUtils.touch('./database.json')
+  end
+end
+
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
   end
 end
 
