@@ -25,6 +25,7 @@ class MemoDB
       File.open(@json_file) do |file|
         hashes = JSON.parse(file.read) unless File.zero?(@json_file)
       end
+      hashes
     end
 
     def write_hashes(new_n, memos)
