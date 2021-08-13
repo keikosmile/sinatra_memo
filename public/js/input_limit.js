@@ -6,10 +6,10 @@ $(function() {
 
     $('.js-2input__cnt1').text(cnt);
 
-    // cntは青字
+    // cntは黒字
     if (cnt > 0 && cnt < 30) {
       $('.js-2input__target1').removeClass('js-danger');
-      // cnt2は青字
+      // cnt2は黒字
       if (cnt2 >= 0 && cnt2 < 500) {
         $('.js-2input__btn').prop('disabled', false);
       }
@@ -31,10 +31,10 @@ $(function() {
 
     $('.js-2input__cnt2').text(cnt2);
 
-    // cnt2は青字
+    // cnt2は黒字
     if (cnt2 >= 0 && cnt2 < 500) {
       $('.js-2input__target2').removeClass('js-danger');
-      // cntは青字
+      // cntは黒字
       if (cnt > 0 && cnt < 30) {
         $('.js-2input__btn').prop('disabled', false);
       // cntは赤字
