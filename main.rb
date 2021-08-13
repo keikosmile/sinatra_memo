@@ -3,12 +3,11 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
-# include ERB::Util
+
 configure do
   set :app_title, 'メモアプリ'
-  unless File.exist?('./database.json')
-    FileUtils.touch('./database.json')
-  end
+  set :json_file, './database.json'
+  FileUtils.touch(settings.json_file) unless File.exist?(settings.json_file)
 end
 
 helpers do
@@ -18,36 +17,33 @@ helpers do
 end
 
 class MemoDB
+  @json_file = './database.json'
+
   class << self
     def read_hashes
       hashes = {}
-      File.open('./database.json') { |file|
-        unless File.zero?('./database.json')
-          hashes = JSON.parse(file.read)
-        end
-      }
-      return hashes
+      File.open(@json_file) do |file|
+        hashes = JSON.parse(file.read) unless File.zero?(@json_file)
+      end
     end
 
     def write_hashes(new_n, memos)
-      hashes= {"new_n"=>new_n,"memos"=>memos}
-      File.open('./database.json', 'w') { |file|
+      hashes = { 'new_n' => new_n, 'memos' => memos }
+      File.open(@json_file, 'w') do |file|
         JSON.dump(hashes, file)
-      }
+      end
     end
 
     def select(memo_id)
       hashes = MemoDB.read_hashes
-      return hashes["memos"][memo_id]
+      hashes['memos'][memo_id]
     end
 
     def select_all
       hashes = MemoDB.read_hashes
       memos = {}
-      unless hashes.empty?
-        memos = hashes["memos"]
-      end
-      return memos
+      memos = hashes['memos'] unless hashes.empty?
+      memos
     end
 
     def insert(title, body)
@@ -55,26 +51,26 @@ class MemoDB
       new_n = 0
       memos = {}
       unless hashes.empty?
-        new_n = hashes["new_n"]
-        memos = hashes["memos"]
+        new_n = hashes['new_n']
+        memos = hashes['memos']
       end
-      memos[new_n + 1] = {"title"=>title, "body"=>body}
+      memos[new_n + 1] = { 'title' => title, 'body' => body }
       MemoDB.write_hashes(new_n + 1, memos)
     end
 
     def delete(memo_id)
       hashes = MemoDB.read_hashes
-      new_n = hashes["new_n"]
-      memos = hashes["memos"]
+      new_n = hashes['new_n']
+      memos = hashes['memos']
       memos.delete(memo_id)
       MemoDB.write_hashes(new_n, memos)
     end
 
     def update(memo_id, title, body)
       hashes = MemoDB.read_hashes
-      new_n = hashes["new_n"]
-      memos = hashes["memos"]
-      memos[memo_id] = {"title"=>title, "body"=>body}
+      new_n = hashes['new_n']
+      memos = hashes['memos']
+      memos[memo_id] = { 'title' => title, 'body' => body }
       MemoDB.write_hashes(new_n, memos)
     end
   end

@@ -1,39 +1,53 @@
-jQuery(function($) {
-  // body textareaへ入力時のイベント
-  $('.js_body').on('input', function() {
-    // 文字数を取得する
-    var cnt = $(this).val().length;
-    // 現在の文字数を表示する
-    $('.js_now_body_cnt').text(cnt);
-    // 0文字以上かつ500文字以内の場合、ボタンを有効化＆黒字
-    if (cnt >= 0 && 500 > cnt) {
-      $('.js_btn').prop('disabled', false);
-      $('.js_body_cnt_area').removeClass('js_cnt_danger');
+$(function() {
+  $('.js-2input__input1').on('input', function() {
+
+    var cnt = $('.js-2input__input1').val().length;
+    var cnt2 = $('.js-2input__input2').val().length;
+
+    $('.js-2input__cnt1').text(cnt);
+
+    // cntは青字
+    if (cnt > 0 && cnt < 30) {
+      $('.js-2input__target1').removeClass('js-danger');
+      // cnt2は青字
+      if (cnt2 >= 0 && cnt2 < 500) {
+        $('.js-2input__btn').prop('disabled', false);
+      }
+      // cnt2は赤字
+      else {
+        $('.js-2input__btn').prop('disabled', true);
+      }
+    // cntは赤字
     } else {
-      // 500文字を超える場合、ボタンを無効化＆赤字
-      $('.js_btn').prop('disabled', true);
-      $('.js_body_cnt_area').addClass('js_cnt_danger');
+      $('.js-2input__target1').addClass('js-danger');
+      $('.js-2input__btn').prop('disabled', true);
     }
   });
 
-  // title テキストボックスへ入力時のイベント
-  $('.js_title').on('input', function() {
-    // 文字数を取得する
-    var cnt = $(this).val().length;
-    // 現在の文字数を表示する
-    $('.js_now_title_cnt').text(cnt);
-    // 1文字以上かつ30文字以内の場合、ボタンを有効化＆黒字
-    if (cnt > 0 && 30 > cnt) {
-      $('.js_btn').prop('disabled', false);
-      $('.js_title_cnt_area').removeClass('js_cnt_danger');
+  $('.js-2input__input2').on('input', function() {
+
+    var cnt = $('.js-2input__input1').val().length;
+    var cnt2 = $('.js-2input__input2').val().length;
+
+    $('.js-2input__cnt2').text(cnt2);
+
+    // cnt2は青字
+    if (cnt2 >= 0 && cnt2 < 500) {
+      $('.js-2input__target2').removeClass('js-danger');
+      // cntは青字
+      if (cnt > 0 && cnt < 30) {
+        $('.js-2input__btn').prop('disabled', false);
+      // cntは赤字
+      } else {
+        $('.js-2input__btn').prop('disabled', true);
+      }
+    // cnt2は赤字
     } else {
-      // 0文字または30文字を超える場合、ボタンを無効化＆赤字
-      $('.js_btn').prop('disabled', true);
-      $('.js_title_cnt_area').addClass('js_cnt_danger');
+      $('.js-2input__target2').addClass('js-danger');
+      $('.js-2input__btn').prop('disabled', true);
     }
   });
 
-  // リロード時に初期文字列が入っていた時の対策
-  $('.js_body').trigger('input');
-  $('.js_title').trigger('input');
+  $('.js-2input__input1').trigger('input');
+  $('.js-2input__input2').trigger('input');
 });

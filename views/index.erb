@@ -1,38 +1,57 @@
-<h1 class="level1-heading">
-  <span class="level1-heading__inner">ホーム</span>
-</h1>
-
-<div id="table-top" class="cross-table">
-  <table class="cross-table__inner">
-    <thead class="cross-table__headers">
-      <tr class="cross-table__header-row">
-        <th class="cross-table__header cross-table__header--md-sticky">メモID</th>
-        <th class="cross-table__header">タイトル</th>
-        <th class="cross-table__header">内容</th>
-      </tr>
-    </thead>
-    <tbody class="cross-table__body">
-      <% unless @result_hash.empty? %>
-        <% @result_hash.each do |k, v| %>
-          <% memo_id = k %>
-          <% title = v["title"] %>
-          <% body = v["body"] %>
-          <tr class="cross-table__body-row js_table_body_row" data-href="/memos/<%= memo_id %>">
-            <td class="cross-table__text cross-table__header--md-sticky"><%= memo_id %></td>
-            <td class="cross-table__text"><%= h title %></td>
-            <td class="cross-table__text"><%= h body %></td>
-          </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
+<!-- タイトル -->
+<div class="content__title">
+  <h1 class="level1-heading">
+    <span class="level1-heading__inner">ホーム</span>
+  </h1>
 </div>
+<!--/.content__title -->
 
-<form action="/memos/new" method="get">
-  <input class="rounded-btn" type="submit" value="メモ新規作成">
-</form>
+<!-- テーブル -->
+<div id="table-top" class="content__table">
+  <div class="table">
+    <table class="table__inner">
 
-<span class="before-icon before-icon--chevron-up">
-  <a class="table-top" href="#table-top">表の先頭へ戻る</a>
-</span>
+      <thead class="table__headers">
+        <tr class="table__header-row">
+          <th class="table__header">メモID</th>
+          <th class="table__header">タイトル</th>
+          <th class="table__header">内容</th>
+        </tr>
+      </thead>
+
+      <tbody class="table__body">
+        <% unless @result_hash.empty? %>
+          <% @result_hash.each do |k, v| %>
+            <% memo_id = k %>
+            <% title = v["title"] %>
+            <% body = v["body"] %>
+            <tr class="table__body-row js-table__row-link" data-href="/memos/<%= memo_id %>">
+              <td class="table__text"><%= memo_id %></td>
+              <td class="table__text"><%= h title %></td>
+              <td class="table__text"><%= h body %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+<!--/.content__table -->
+
+<!-- ボタン -->
+<div class="content__btn">
+  <form action="/memos/new" method="get">
+    <input class="rounded-btn" type="submit" value="メモ新規作成">
+  </form>
+</div>
+<!--/.content__btn -->
+
+<!-- topへ移動-->
+<div class="content__top">
+  <span class="before-icon before-icon_chevron_up">
+    <a class="table-top" href="#table-top">表の先頭へ戻る</a>
+  </span>
+</div>
+<!--/.content__top -->
 

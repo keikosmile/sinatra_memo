@@ -6,8 +6,10 @@
 ### ファイル構成
 - public/
   - images/
-      - ico_pagetop.png
       - memo.jpg
+  - js/
+      - input_limit.js
+      - table_click.js
   - reset.css
   - style.css
 - views/

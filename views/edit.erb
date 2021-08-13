@@ -1,22 +1,46 @@
-<h1 class="level1-heading">
-  <span class="level1-heading__inner">メモ変更</span>
-</h1>
-
-<div class ="input">
-  <h2 class="input__label level2-heading">メモID</h2>
-  <%= @memo_id %>
-
-  <form action="/memos/<%= @memo_id %>" method="post">
-    <h2 class="input__label level2-heading">タイトル</h2>
-    <input class="input__input js_title rounded-input" type="text" name="title" value="<%= @result_hash["title"] %>">
-    <div class="input__text js_title_cnt_area"><span class="js_now_title_cnt">0</span>/30</div>
-
-    <h2 class="input__label level2-heading">内容</h2>
-    <textarea class="input__textarea js_body rounded-textarea" name="body" rows="10"><%= @result_hash["body"] %></textarea>
-    <div class="input__text js_body_cnt_area"><span class="js_now_body_cnt">0</span>/500</div>
-
-    <input type="hidden" name="_method" value="PATCH">
-    <input class="input__btn js_btn rounded-btn btn--warning" type="submit" value="メモ変更">
-  </form>
+<!-- タイトル -->
+<div class="content__title">
+  <h1 class="level1-heading">
+    <span class="level1-heading__inner">メモ変更</span>
+  </h1>
 </div>
- <!-- /.input-group -->
+<!--/.content__title -->
+
+<!-- コンテンツ インプット -->
+<div class="content__input">
+  <!-- インプット -->
+  <div class="input">
+    <h2 class="input__label level2-heading">メモID</h2>
+    <p class="input__text"><%= @memo_id %></p>
+  </div>
+  <!-- /.input -->
+
+  <!-- .js-2input -->
+  <div class="js-2input">
+    <form action="/memos/<%= @memo_id %>" method="post">
+
+      <!-- インプット -->
+      <div class="input">
+        <h2 class="input__label level2-heading">タイトル</h2>
+        <input class="js-2input__input1 input__input rounded-input" type="text" name="title" value="<%= @result_hash["title"] %>">
+        <div class="js-2input__target1 input__text">
+          <span class="js-2input__cnt1">0</span>/30</div>
+      </div>
+      <!-- /.input -->
+
+      <!-- インプット -->
+      <div class="input">
+        <h2 class="input__label level2-heading">内容</h2>
+        <textarea class="js-2input__input2 input__input rounded-textarea" name="body" rows="10"><%= @result_hash["body"] %></textarea>
+        <div class="js-2input__target2 input__text">
+          <span class="js-2input__cnt2">0</span>/500</div>
+      </div>
+      <!-- /.input -->
+
+      <input type="hidden" name="_method" value="PATCH">
+      <input class="js-2input__btn rounded-btn rounded-btn_warning" type="submit" value="メモ変更">
+    </form>
+  </div>
+  <!-- /.js-2input -->
+</div>
+<!--/.content__input -->

@@ -11,14 +11,13 @@
   </head>
 
   <body>
-    <!-- 外側にあたる要素 -->
+    <!-- ヘッダー -->
     <header class="header">
-      <!-- 内側にあたる要素 -->
       <div class="header__inner">
 
-        <!-- レイアウトの中に配置されたメディア -->
-        <div class="header__inner__media">
-          <a class="media media--link" href="/">
+        <!-- ヘッダー内のメディア -->
+        <div class="header__media">
+          <a class="media media_link" href="/">
             <figure class="media__img-wrapper">
               <img class = "media__img" src="/images/memo.jpg" alt="写真：メモ">
             </figure>
@@ -32,35 +31,32 @@
             </div>
           </a>
         </div>
-        <!-- /.header__inner__media -->
+        <!-- /.header__media -->
 
-        <!-- レイアウトの中に配置されたボタン -->
-        <div class="header__inner__btn">
+        <!-- ヘッダー内のボタン -->
+        <div class="header__btn">
           <a class="btn" href="/about"><p>メモアプリとは</p></a>
         </div>
-        <!-- /.footer__inner__btn -->
-
+        <!-- /.header__btn -->
       </div>
-      <!-- /.header__inner -->
     </header>
 
+    <!-- コンテンツ -->
     <main>
       <section class="content">
         <%= yield %>
       </section>
     </main>
 
+    <!-- フッター -->
     <footer>
-      <!-- 外側にあたる要素 -->
-      <div class="footer footer--border-top-grey">
-
-        <!-- 内側にあたる要素 -->
+      <!-- フッター内のボーダー -->
+      <div class="footer footer__border_top-grey">
+        <!-- フッター内のインナー -->
         <div class="footer__inner">
-          <small class="footer-copyright">&copy; 2021 keikosmile All Rights Reserved.</small>
+          <small class="footer__copyright">&copy; 2021 keikosmile All Rights Reserved.</small>
         </div>
-
       </div>
-      <!-- /.footer -->
     </footer>
 
   </body>
