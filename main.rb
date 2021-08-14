@@ -8,8 +8,6 @@ $json_file = './database.json'
 
 configure do
   set :app_title, 'メモアプリ'
-  # set :json_file, './database.json'
-  # FileUtils.touch(settings.json_file) unless File.exist?(settings.json_file)
   FileUtils.touch($json_file) unless File.exist?($json_file)
 end
 
@@ -20,14 +18,9 @@ helpers do
 end
 
 class MemoDB
-  # @json_file = './database.json'
-
   class << self
     def read_hashes
       hashes = {}
-      # File.open(@json_file) do |file|
-      #   hashes = JSON.parse(file.read) unless File.zero?(@json_file)
-      # end
       File.open($json_file) do |file|
         hashes = JSON.parse(file.read) unless File.zero?($json_file)
       end
@@ -36,9 +29,6 @@ class MemoDB
 
     def write_hashes(new_n, memos)
       hashes = { 'new_n' => new_n, 'memos' => memos }
-      # File.open(@json_file, 'w') do |file|
-      #   JSON.dump(hashes, file)
-      # end
       File.open($json_file, 'w') do |file|
         JSON.dump(hashes, file)
       end
