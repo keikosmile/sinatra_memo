@@ -4,32 +4,21 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
 
-$json_file = './database.json'
-
-configure do
-  set :app_title, 'メモアプリ'
-  FileUtils.touch($json_file) unless File.exist?($json_file)
-end
-
-helpers do
-  def h(text)
-    Rack::Utils.escape_html(text)
-  end
-end
-
 class MemoDB
+  JSON_FILE = './database.json'
+
   class << self
     def read_hashes
       hashes = {}
-      File.open($json_file) do |file|
-        hashes = JSON.parse(file.read) unless File.zero?($json_file)
+      File.open(JSON_FILE) do |file|
+        hashes = JSON.parse(file.read) unless File.zero?(JSON_FILE)
       end
       hashes
     end
 
     def write_hashes(new_n, memos)
       hashes = { 'new_n' => new_n, 'memos' => memos }
-      File.open($json_file, 'w') do |file|
+      File.open(JSON_FILE, 'w') do |file|
         JSON.dump(hashes, file)
       end
     end
@@ -73,6 +62,17 @@ class MemoDB
       memos[memo_id] = { 'title' => title, 'body' => body }
       MemoDB.write_hashes(new_n, memos)
     end
+  end
+end
+
+configure do
+  set :app_title, 'メモアプリ'
+  FileUtils.touch(MemoDB::JSON_FILE) unless File.exist?(MemoDB::JSON_FILE)
+end
+
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
   end
 end
 
