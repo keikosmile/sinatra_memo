@@ -16,8 +16,8 @@ class MemoDB
       hashes
     end
 
-    def write_hashes(new_n, memos)
-      hashes = { 'new_n' => new_n, 'memos' => memos }
+    def write_hashes(new_number, memos)
+      hashes = { 'new_number' => new_number, 'memos' => memos }
       File.open(JSON_FILE, 'w') do |file|
         JSON.dump(hashes, file)
       end
@@ -37,30 +37,30 @@ class MemoDB
 
     def insert(title, body)
       hashes = MemoDB.read_hashes
-      new_n = 0
+      new_number = 0
       memos = {}
       unless hashes.empty?
-        new_n = hashes['new_n']
+        new_number = hashes['new_number']
         memos = hashes['memos']
       end
-      memos[new_n + 1] = { 'title' => title, 'body' => body }
-      MemoDB.write_hashes(new_n + 1, memos)
+      memos[new_number + 1] = { 'title' => title, 'body' => body }
+      MemoDB.write_hashes(new_number + 1, memos)
     end
 
     def delete(memo_id)
       hashes = MemoDB.read_hashes
-      new_n = hashes['new_n']
+      new_number = hashes['new_number']
       memos = hashes['memos']
       memos.delete(memo_id)
-      MemoDB.write_hashes(new_n, memos)
+      MemoDB.write_hashes(new_number, memos)
     end
 
     def update(memo_id, title, body)
       hashes = MemoDB.read_hashes
-      new_n = hashes['new_n']
+      new_number = hashes['new_number']
       memos = hashes['memos']
       memos[memo_id] = { 'title' => title, 'body' => body }
-      MemoDB.write_hashes(new_n, memos)
+      MemoDB.write_hashes(new_number, memos)
     end
   end
 end
