@@ -1,18 +1,13 @@
-<!-- タイトル -->
 <div class="content__title">
   <h1 class="level1-heading">
     <span class="level1-heading__inner">メモ新規作成</span>
   </h1>
 </div>
-<!--/.content__title -->
 
-<!-- コンテンツ インプット -->
 <div class="content__input">
-  <!-- .js-2input -->
   <div class="js-2input">
     <form action="/memos/new" method="post">
 
-      <!-- インプット -->
       <div class ="input">
         <h2 class="input__label level2-heading">タイトル</h2>
         <input class="js-2input__input-title input__input rounded-input" type="text" name="title" placeholder="30字以内でお願いします。" value="">
@@ -20,9 +15,7 @@
           <span class="js-2input__count-title">0</span>/30
         </div>
       </div>
-      <!-- /.input -->
 
-      <!-- .input -->
       <div class ="input">
         <h2 class="input__label level2-heading">内容</h2>
         <textarea class="js-2input__input-body input__input rounded-textarea" name="body" rows="10" placeholder="500字以内でお願いします。" value=""></textarea>
@@ -30,12 +23,9 @@
           <span class="js-2input__count-body">0</span>/500
         </div>
       </div>
-      <!-- /.input -->
 
       <input class="js-2input__btn rounded-btn" type="submit" value="メモ保存">
     </form>
     <script src="/js/input_limit.js"></script>
   </div>
-  <!-- /.js-2input -->
 </div>
-<!-- /.content__input -->
