@@ -1,53 +1,55 @@
-$(function() {
-  $('.js-2input__input1').on('input', function() {
+let inputTitle = document.querySelector('.js-2input__input-title');
+let judgeTitle = document.querySelector('.js-2input__judge-title');
+let countTitle = document.querySelector('.js-2input__count-title');
 
-    var cnt = $('.js-2input__input1').val().length;
-    var cnt2 = $('.js-2input__input2').val().length;
+let inputBody = document.querySelector('.js-2input__input-body');
+let judgeBody = document.querySelector('.js-2input__judge-body');
+let countBody = document.querySelector('.js-2input__count-body');
 
-    $('.js-2input__cnt1').text(cnt);
+let button = document.querySelector('.js-2input__btn');
 
-    // cntは黒字
-    if (cnt > 0 && cnt < 30) {
-      $('.js-2input__target1').removeClass('js-danger');
-      // cnt2は黒字
-      if (cnt2 >= 0 && cnt2 < 500) {
-        $('.js-2input__btn').prop('disabled', false);
-      }
-      // cnt2は赤字
-      else {
-        $('.js-2input__btn').prop('disabled', true);
-      }
-    // cntは赤字
-    } else {
-      $('.js-2input__target1').addClass('js-danger');
-      $('.js-2input__btn').prop('disabled', true);
-    }
-  });
+let judgeCount = (inputTitleCount, inputBodyCount) => {
+  let countTitleBoolean = inputTitleCount > 0 && inputTitleCount < 30 ? true : false;
+  let countBodyBoolean = inputBodyCount >= 0 && inputBodyCount < 500 ? true : false;
+  return [countTitleBoolean, countBodyBoolean];
+}
 
-  $('.js-2input__input2').on('input', function() {
+let enableButton = (countTitleBoolean, countBodyBoolean) => {
+  if (countTitleBoolean && countBodyBoolean) {
+    button.removeAttribute('disabled');
+  } else {
+    button.setAttribute('disabled', true);
+  }
+};
 
-    var cnt = $('.js-2input__input1').val().length;
-    var cnt2 = $('.js-2input__input2').val().length;
+let commonFunction = () => {
+  let inputTitleCount = inputTitle.value.length;
+  let inputBodyCount = inputBody.value.length;
+  let [countTitleBoolean, countBodyBoolean] = judgeCount(inputTitleCount, inputBodyCount);
+  enableButton(countTitleBoolean, countBodyBoolean);
+  return [inputTitleCount, inputBodyCount, countTitleBoolean, countBodyBoolean];
+}
 
-    $('.js-2input__cnt2').text(cnt2);
-
-    // cnt2は黒字
-    if (cnt2 >= 0 && cnt2 < 500) {
-      $('.js-2input__target2').removeClass('js-danger');
-      // cntは黒字
-      if (cnt > 0 && cnt < 30) {
-        $('.js-2input__btn').prop('disabled', false);
-      // cntは赤字
-      } else {
-        $('.js-2input__btn').prop('disabled', true);
-      }
-    // cnt2は赤字
-    } else {
-      $('.js-2input__target2').addClass('js-danger');
-      $('.js-2input__btn').prop('disabled', true);
-    }
-  });
-
-  $('.js-2input__input1').trigger('input');
-  $('.js-2input__input2').trigger('input');
+inputTitle.addEventListener('input', () => {
+  let [inputTitleCount, inputBodyCount, countTitleBoolean, countBodyBoolean] = commonFunction();
+  countTitle.innerText = inputTitleCount;
+  if (countTitleBoolean) {
+    judgeTitle.classList.remove('js-danger');
+  } else {
+    judgeTitle.classList.add('js-danger');
+  }
 });
+
+inputBody.addEventListener('input', () => {
+  let [inputTitleCount, inputBodyCount, countTitleBoolean, countBodyBoolean] = commonFunction();
+  countBody.innerText = inputBodyCount;
+  if (countBodyBoolean) {
+    judgeBody.classList.remove('js-danger');
+  } else {
+    judgeBody.classList.add('js-danger');
+  }
+});
+
+let evt = new Event('input');
+inputTitle.dispatchEvent(evt);
+inputBody.dispatchEvent(evt);
