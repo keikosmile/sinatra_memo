@@ -8,12 +8,6 @@ const countBody = document.querySelector('.js-2input__count-body');
 
 const button = document.querySelector('.js-2input__btn');
 
-const judgeCount = (inputTitleCount, inputBodyCount) => {
-  let isValidTitleCount = inputTitleCount > 0 && inputTitleCount < 30;
-  let isValidBodyCount = inputBodyCount >= 0 && inputBodyCount < 500;
-  return [isValidTitleCount, isValidBodyCount];
-}
-
 const enableButton = (countTitleBoolean, countBodyBoolean) => {
   if (countTitleBoolean && countBodyBoolean) {
     button.removeAttribute('disabled');
@@ -23,9 +17,10 @@ const enableButton = (countTitleBoolean, countBodyBoolean) => {
 };
 
 const commonFunction = () => {
-  let inputTitleCount = inputTitle.value.length;
-  let inputBodyCount = inputBody.value.length;
-  let [isValidTitleCount, isValidBodyCount] = judgeCount(inputTitleCount, inputBodyCount);
+  const inputTitleCount = inputTitle.value.length;
+  const inputBodyCount = inputBody.value.length;
+  const isValidTitleCount = inputTitleCount > 0 && inputTitleCount < 30;
+  const isValidBodyCount = inputBodyCount >= 0 && inputBodyCount < 500;
   enableButton(isValidTitleCount, isValidBodyCount);
   return [inputTitleCount, inputBodyCount, isValidTitleCount, isValidBodyCount];
 }
