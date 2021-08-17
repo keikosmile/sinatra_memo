@@ -24,6 +24,7 @@
 - .rubocop.yml
 - database.json (初めてWebアプリケーションを実行後、作成される)
 - Gemfile
+- Gemfile.lock
 - main.rb
 - README.md
 
