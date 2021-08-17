@@ -10,9 +10,7 @@ class MemoDB
   class << self
     def read_data
       data = {}
-      File.open(JSON_FILE) do |file|
-        data = JSON.parse(file.read) unless File.zero?(JSON_FILE)
-      end
+      data = JSON.parse(File.read(JSON_FILE)) unless File.zero?(JSON_FILE)
       data
     end
 
