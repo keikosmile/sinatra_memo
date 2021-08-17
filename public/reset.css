@@ -100,3 +100,31 @@ hr {
 input, select {
     vertical-align:middle;
 }
+
+/*
+////////////////////////////////////////
+reset.css では足りない初期化を追加
+////////////////////////////////////////
+*/
+
+/* 全てに box-sizing: border-box; を適用 */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* 画像に関する初期設定 */
+img {
+  /* 大きい画像がはみ出さないように */
+  max-width: 100%;
+  /* 画像周りの無駄なスペースができないように */
+  vertical-align: bottom;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0;
+}
+
+input,textarea {
+  font-family: inherit;
+}
