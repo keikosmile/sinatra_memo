@@ -9,9 +9,9 @@ const countBody = document.querySelector('.js-2input__count-body');
 const button = document.querySelector('.js-2input__btn');
 
 const judgeCount = (inputTitleCount, inputBodyCount) => {
-  let countTitleBoolean = inputTitleCount > 0 && inputTitleCount < 30 ? true : false;
-  let countBodyBoolean = inputBodyCount >= 0 && inputBodyCount < 500 ? true : false;
-  return [countTitleBoolean, countBodyBoolean];
+  let isValidTitleCount = inputTitleCount > 0 && inputTitleCount < 30;
+  let isValidBodyCount = inputBodyCount >= 0 && inputBodyCount < 500;
+  return [isValidTitleCount, isValidBodyCount];
 }
 
 const enableButton = (countTitleBoolean, countBodyBoolean) => {
@@ -25,15 +25,15 @@ const enableButton = (countTitleBoolean, countBodyBoolean) => {
 const commonFunction = () => {
   let inputTitleCount = inputTitle.value.length;
   let inputBodyCount = inputBody.value.length;
-  let [countTitleBoolean, countBodyBoolean] = judgeCount(inputTitleCount, inputBodyCount);
-  enableButton(countTitleBoolean, countBodyBoolean);
-  return [inputTitleCount, inputBodyCount, countTitleBoolean, countBodyBoolean];
+  let [isValidTitleCount, isValidBodyCount] = judgeCount(inputTitleCount, inputBodyCount);
+  enableButton(isValidTitleCount, isValidBodyCount);
+  return [inputTitleCount, inputBodyCount, isValidTitleCount, isValidBodyCount];
 }
 
 inputTitle.addEventListener('input', () => {
-  let [inputTitleCount, inputBodyCount, countTitleBoolean, countBodyBoolean] = commonFunction();
+  let [inputTitleCount, inputBodyCount, isValidTitleCount, isValidBodyCount] = commonFunction();
   countTitle.innerText = inputTitleCount;
-  if (countTitleBoolean) {
+  if (isValidTitleCount) {
     judgeTitle.classList.remove('js-danger');
   } else {
     judgeTitle.classList.add('js-danger');
@@ -41,9 +41,9 @@ inputTitle.addEventListener('input', () => {
 });
 
 inputBody.addEventListener('input', () => {
-  let [inputTitleCount, inputBodyCount, countTitleBoolean, countBodyBoolean] = commonFunction();
+  let [inputTitleCount, inputBodyCount, isValidTitleCount, isValidBodyCount] = commonFunction();
   countBody.innerText = inputBodyCount;
-  if (countBodyBoolean) {
+  if (isValidBodyCount) {
     judgeBody.classList.remove('js-danger');
   } else {
     judgeBody.classList.add('js-danger');
