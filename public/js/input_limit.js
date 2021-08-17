@@ -8,25 +8,21 @@ const countBody = document.querySelector('.js-2input__count-body');
 
 const button = document.querySelector('.js-2input__btn');
 
-const enableButton = (countTitleBoolean, countBodyBoolean) => {
-  if (countTitleBoolean && countBodyBoolean) {
+const enableButton = (isValidTitleCount, isValidBodyCount) => {
+  if (isValidTitleCount && isValidBodyCount) {
     button.removeAttribute('disabled');
   } else {
     button.setAttribute('disabled', true);
   }
 };
 
-const commonFunction = () => {
+inputTitle.addEventListener('input', () => {
   const inputTitleCount = inputTitle.value.length;
   const inputBodyCount = inputBody.value.length;
   const isValidTitleCount = inputTitleCount > 0 && inputTitleCount < 30;
   const isValidBodyCount = inputBodyCount >= 0 && inputBodyCount < 500;
-  enableButton(isValidTitleCount, isValidBodyCount);
-  return [inputTitleCount, inputBodyCount, isValidTitleCount, isValidBodyCount];
-}
 
-inputTitle.addEventListener('input', () => {
-  let [inputTitleCount, inputBodyCount, isValidTitleCount, isValidBodyCount] = commonFunction();
+  enableButton(isValidTitleCount, isValidBodyCount);
   countTitle.innerText = inputTitleCount;
   if (isValidTitleCount) {
     judgeTitle.classList.remove('js-danger');
@@ -36,7 +32,12 @@ inputTitle.addEventListener('input', () => {
 });
 
 inputBody.addEventListener('input', () => {
-  let [inputTitleCount, inputBodyCount, isValidTitleCount, isValidBodyCount] = commonFunction();
+  const inputTitleCount = inputTitle.value.length;
+  const inputBodyCount = inputBody.value.length;
+  const isValidTitleCount = inputTitleCount > 0 && inputTitleCount < 30;
+  const isValidBodyCount = inputBodyCount >= 0 && inputBodyCount < 500;
+
+  enableButton(isValidTitleCount, isValidBodyCount);
   countBody.innerText = inputBodyCount;
   if (isValidBodyCount) {
     judgeBody.classList.remove('js-danger');
