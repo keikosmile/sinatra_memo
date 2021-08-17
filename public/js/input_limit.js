@@ -1,20 +1,20 @@
-let inputTitle = document.querySelector('.js-2input__input-title');
-let judgeTitle = document.querySelector('.js-2input__judge-title');
-let countTitle = document.querySelector('.js-2input__count-title');
+const inputTitle = document.querySelector('.js-2input__input-title');
+const judgeTitle = document.querySelector('.js-2input__judge-title');
+const countTitle = document.querySelector('.js-2input__count-title');
 
-let inputBody = document.querySelector('.js-2input__input-body');
-let judgeBody = document.querySelector('.js-2input__judge-body');
-let countBody = document.querySelector('.js-2input__count-body');
+const inputBody = document.querySelector('.js-2input__input-body');
+const judgeBody = document.querySelector('.js-2input__judge-body');
+const countBody = document.querySelector('.js-2input__count-body');
 
-let button = document.querySelector('.js-2input__btn');
+const button = document.querySelector('.js-2input__btn');
 
-let judgeCount = (inputTitleCount, inputBodyCount) => {
+const judgeCount = (inputTitleCount, inputBodyCount) => {
   let countTitleBoolean = inputTitleCount > 0 && inputTitleCount < 30 ? true : false;
   let countBodyBoolean = inputBodyCount >= 0 && inputBodyCount < 500 ? true : false;
   return [countTitleBoolean, countBodyBoolean];
 }
 
-let enableButton = (countTitleBoolean, countBodyBoolean) => {
+const enableButton = (countTitleBoolean, countBodyBoolean) => {
   if (countTitleBoolean && countBodyBoolean) {
     button.removeAttribute('disabled');
   } else {
@@ -22,7 +22,7 @@ let enableButton = (countTitleBoolean, countBodyBoolean) => {
   }
 };
 
-let commonFunction = () => {
+const commonFunction = () => {
   let inputTitleCount = inputTitle.value.length;
   let inputBodyCount = inputBody.value.length;
   let [countTitleBoolean, countBodyBoolean] = judgeCount(inputTitleCount, inputBodyCount);
