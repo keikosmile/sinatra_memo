@@ -17,8 +17,8 @@
       </thead>
 
       <tbody class="table__body">
-        <% unless @result_hash.empty? %>
-          <% @result_hash.each do |memo_id, title_body_hash| %>
+        <% unless @memos.empty? %>
+          <% @memos.each do |memo_id, title_body_hash| %>
             <% title = title_body_hash["title"] %>
             <% body = title_body_hash["body"] %>
             <tr class="table__body-row js-table__row-link" data-href="/memos/<%= memo_id %>">

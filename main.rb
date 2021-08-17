@@ -8,59 +8,59 @@ class MemoDB
   JSON_FILE = './database.json'
 
   class << self
-    def read_hashes
-      hashes = {}
+    def read_data
+      data = {}
       File.open(JSON_FILE) do |file|
-        hashes = JSON.parse(file.read) unless File.zero?(JSON_FILE)
+        data = JSON.parse(file.read) unless File.zero?(JSON_FILE)
       end
-      hashes
+      data
     end
 
-    def write_hashes(new_number, memos)
-      hashes = { 'new_number' => new_number, 'memos' => memos }
+    def write_data(new_number, memos)
+      data = { 'new_number' => new_number, 'memos' => memos }
       File.open(JSON_FILE, 'w') do |file|
-        JSON.dump(hashes, file)
+        JSON.dump(data, file)
       end
     end
 
     def select(memo_id)
-      hashes = MemoDB.read_hashes
-      hashes['memos'][memo_id]
+      data = MemoDB.read_data
+      data['memos'][memo_id]
     end
 
     def select_all
-      hashes = MemoDB.read_hashes
+      data = MemoDB.read_data
       memos = {}
-      memos = hashes['memos'] unless hashes.empty?
+      memos = data['memos'] unless data.empty?
       memos
     end
 
     def insert(title, body)
-      hashes = MemoDB.read_hashes
+      data = MemoDB.read_data
       new_number = 0
       memos = {}
-      unless hashes.empty?
-        new_number = hashes['new_number']
-        memos = hashes['memos']
+      unless data.empty?
+        new_number = data['new_number']
+        memos = data['memos']
       end
       memos[new_number + 1] = { 'title' => title, 'body' => body }
-      MemoDB.write_hashes(new_number + 1, memos)
+      MemoDB.write_data(new_number + 1, memos)
     end
 
     def delete(memo_id)
-      hashes = MemoDB.read_hashes
-      new_number = hashes['new_number']
-      memos = hashes['memos']
+      data = MemoDB.read_data
+      new_number = data['new_number']
+      memos = data['memos']
       memos.delete(memo_id)
-      MemoDB.write_hashes(new_number, memos)
+      MemoDB.write_data(new_number, memos)
     end
 
     def update(memo_id, title, body)
-      hashes = MemoDB.read_hashes
-      new_number = hashes['new_number']
-      memos = hashes['memos']
+      data = MemoDB.read_data
+      new_number = data['new_number']
+      memos = data['memos']
       memos[memo_id] = { 'title' => title, 'body' => body }
-      MemoDB.write_hashes(new_number, memos)
+      MemoDB.write_data(new_number, memos)
     end
   end
 end
@@ -77,7 +77,7 @@ helpers do
 end
 
 get '/' do
-  @result_hash = MemoDB.select_all
+  @memos = MemoDB.select_all
   erb :index
 end
 
@@ -92,7 +92,7 @@ end
 
 get '/memos/:memo_id' do
   @memo_id = params[:memo_id]
-  @result_hash = MemoDB.select(@memo_id)
+  @memo = MemoDB.select(@memo_id)
   erb :detail
 end
 
@@ -103,7 +103,7 @@ end
 
 get '/memos/:memo_id/edit' do
   @memo_id = params[:memo_id]
-  @result_hash = MemoDB.select(@memo_id)
+  @memo = MemoDB.select(@memo_id)
   erb :edit
 end
 
