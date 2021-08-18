@@ -3,62 +3,49 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
+require 'securerandom'
 
 class MemoDB
   JSON_FILE = './database.json'
 
   class << self
     def read_data
-      data = {}
-      data = JSON.parse(File.read(JSON_FILE)) unless File.zero?(JSON_FILE)
-      data
+      memos = {}
+      memos = JSON.parse(File.read(JSON_FILE)) unless File.zero?(JSON_FILE)
+      memos
     end
 
-    def write_data(new_number, memos)
-      data = { 'new_number' => new_number, 'memos' => memos }
+    def write_data(memos)
       File.open(JSON_FILE, 'w') do |file|
-        JSON.dump(data, file)
+        JSON.dump(memos, file)
       end
     end
 
     def select(memo_id)
-      data = MemoDB.read_data
-      data['memos'][memo_id]
+      memos = MemoDB.read_data
+      memos[memo_id]
     end
 
     def select_all
-      data = MemoDB.read_data
-      memos = {}
-      memos = data['memos'] unless data.empty?
-      memos
+      memos = MemoDB.read_data
     end
 
     def insert(title, body)
-      data = MemoDB.read_data
-      new_number = 0
-      memos = {}
-      unless data.empty?
-        new_number = data['new_number']
-        memos = data['memos']
-      end
-      memos[new_number + 1] = { 'title' => title, 'body' => body }
-      MemoDB.write_data(new_number + 1, memos)
+      memos = MemoDB.read_data
+      memos[SecureRandom.uuid] = { 'title' => title, 'body' => body }
+      MemoDB.write_data(memos)
     end
 
     def delete(memo_id)
-      data = MemoDB.read_data
-      new_number = data['new_number']
-      memos = data['memos']
+      memos = MemoDB.read_data
       memos.delete(memo_id)
-      MemoDB.write_data(new_number, memos)
+      MemoDB.write_data(memos)
     end
 
     def update(memo_id, title, body)
-      data = MemoDB.read_data
-      new_number = data['new_number']
-      memos = data['memos']
+      memos = MemoDB.read_data
       memos[memo_id] = { 'title' => title, 'body' => body }
-      MemoDB.write_data(new_number, memos)
+      MemoDB.write_data(memos)
     end
   end
 end
