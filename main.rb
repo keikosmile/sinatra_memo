@@ -27,7 +27,7 @@ class MemoDB
     end
 
     def select_all
-      memos = MemoDB.read_data
+      MemoDB.read_data
     end
 
     def insert(title, body)
