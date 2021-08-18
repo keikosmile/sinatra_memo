@@ -18,9 +18,9 @@
 
       <tbody class="table__body">
         <% unless @memos.empty? %>
-          <% @memos.each do |memo_id, title_body_hash| %>
-            <% title = title_body_hash["title"] %>
-            <% body = title_body_hash["body"] %>
+          <% @memos.each do |memo_id, title_body| %>
+            <% title = title_body["title"] %>
+            <% body = title_body["body"] %>
             <tr class="table__body-row js-table__row-link" data-href="/memos/<%= memo_id %>">
               <td class="table__text"><%= memo_id %></td>
               <td class="table__text"><%= h title %></td>
