@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title><%= settings.app_title %></title>
     <link rel="stylesheet" href="/reset.css">
-    <link rel="stylesheet" href="/style.css?v=1">
+    <link rel="stylesheet" href="/style.css?v=2">
   </head>
 
   <body>
@@ -13,16 +13,14 @@
 
         <div class="header__media">
           <a class="media media_link" href="/">
-            <figure class="media__img-wrapper">
-              <img class = "media__img" src="/images/memo.jpg" alt="写真：メモ">
-            </figure>
+            <img class = "media__img" src="/images/memo.jpg" alt="写真：メモ">
             <div class="media__body">
-              <h3 class="media__title">
+              <div class="media__title">
                 <%= settings.app_title %>
-              </h3>
-              <p class="media__text">
+              </div>
+              <div class="media__text">
                 メモを共有しよう
-              </p>
+              </div>
             </div>
           </a>
         </div>

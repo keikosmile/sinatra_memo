@@ -20,13 +20,11 @@ a {
 
 /* ヘッダー */
 .header {
-  /* padding-top: 20px; */
   border-bottom: 1px solid #ddd;
 }
 
 .header__inner {
   width: 95%;
-  /* max-width: 95%; */
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -251,41 +249,24 @@ a {
   align-items: center;
 }
 
-.media__img-wrapper {
-  flex: 0 1 20%;
-  margin-right: 8%;
-}
-
 .media__img {
-  width: 100%;
-}
-
-.media__body {
-  flex: 1;
-}
-
-.media__body > *:last-child {
-  margin-bottom: 0;
+  width: 50px;
+  margin-right: 10px;
 }
 
 .media__title {
   font-family: 'Yusei Magic';
-  margin-bottom: 10px;
   font-size: 1.5rem;
 }
 
 .media__text {
   color: #777;
+  font-size: 0.75rem;
 }
 
 .media_link {
   color: currentColor;
   text-decoration: none;
-  transition: .25s;
-}
-
-.media_link .media__title,
-.media_link .media__text {
   transition: .25s;
 }
 
