@@ -20,17 +20,19 @@
 </div>
 
 <div class="content__btn">
-  <ul class="horizontal-btn-list">
-    <li class="horizontal-btn-list__item">
-      <form action="/memos/<%= @memo_id %>/edit" method="get">
-        <input class="horizontal-btn-list__btn rounded-btn rounded-btn_warning" type="submit" value="メモ変更">
-      </form>
-    </li>
-    <li class="horizontal-btn-list__item">
-      <form action="/memos/<%= @memo_id %>" method="post">
-        <input type="hidden" name="_method" value="DELETE">
-        <input class="horizontal-btn-list__btn rounded-btn rounded-btn_alert" type="submit" value="メモ削除">
-      </form>
-    </li>
-  </ul>
+  <div class="horizontal-btn">
+    <ul class="horizontal-btn-list">
+      <li class="horizontal-btn-list__item">
+        <form action="/memos/<%= @memo_id %>/edit" method="get">
+          <input class="horizontal-btn-list__btn rounded-btn rounded-btn_warning" type="submit" value="メモ変更">
+        </form>
+      </li>
+      <li class="horizontal-btn-list__item">
+        <form action="/memos/<%= @memo_id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input class="horizontal-btn-list__btn rounded-btn rounded-btn_alert" type="submit" value="メモ削除">
+        </form>
+      </li>
+    </ul>
+  </div>
 </div>

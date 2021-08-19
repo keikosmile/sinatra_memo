@@ -311,6 +311,10 @@ a {
 }
 
 /* 水平ボタンリスト */
+.horizontal-btn {
+  display: inline-block;
+}
+
 .horizontal-btn-list {
   display: flex;
   list-style: none;
@@ -322,7 +326,6 @@ a {
 
 .horizontal-btn-list__item {
   flex: 1 1 0;
-  max-width: 200px;
   margin-right: 20px;
 }
 
@@ -330,8 +333,6 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
 }
 
 /* インプット */
