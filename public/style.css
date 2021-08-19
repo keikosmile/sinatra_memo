@@ -37,15 +37,10 @@ a {
 }
 
 /* コンテンツ */
-.content {
+.content__table{
   max-width: 1152px;
   margin: 0 auto;
-  padding: 60px 15px;
-}
-
-.content__title,
-.content__table{
-  margin-bottom: 30px;
+  padding: 30px 15px;
 }
 
 .content__top {
