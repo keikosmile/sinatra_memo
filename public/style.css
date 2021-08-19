@@ -43,7 +43,8 @@ a {
   padding: 30px 15px;
 }
 
-.content__btn {
+.content__btn,
+.input-form__btn {
   text-align: center;
 }
 

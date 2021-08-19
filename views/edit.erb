@@ -9,7 +9,7 @@
     <p class="input__text"><%= @memo_id %></p>
   </div>
 
-  <div class="js-2input">
+  <div class="js-2input input-form">
     <form action="/memos/<%= @memo_id %>" method="post">
 
       <div class="input">
@@ -26,8 +26,10 @@
           <span class="js-2input__count-body">0</span>/500</div>
       </div>
 
-      <input type="hidden" name="_method" value="PATCH">
-      <input class="js-2input__btn rounded-btn rounded-btn_warning" type="submit" value="メモ変更">
+      <div class="input-form__btn">
+        <input type="hidden" name="_method" value="PATCH">
+        <input class="js-2input__btn rounded-btn rounded-btn_warning" type="submit" value="メモ変更">
+      </div>
     </form>
     <script src="/js/input_limit.js"></script>
   </div>
