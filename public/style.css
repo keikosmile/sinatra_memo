@@ -20,7 +20,7 @@ a {
 
 /* ヘッダー */
 .header {
-  padding-top: 20px;
+  /* padding-top: 20px; */
   border-bottom: 1px solid #ddd;
 }
 
@@ -34,6 +34,8 @@ a {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
+  height: 72px;
 }
 
 /* コンテンツ */
