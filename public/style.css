@@ -205,23 +205,6 @@ a {
   text-align: center;
 }
 
-.level1-heading__inner {
-  position: relative;
-  display: inline-block;
-  transform: translateY(-20%);
-}
-
-.level1-heading__inner::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  width: 80px;
-  height: 1px;
-  background-color: currentColor;
-  transform: translateX(-50%);
-}
-
 .level2-heading {
   padding-bottom: 10px;
   border-bottom: 4px solid #b5e7e1;
