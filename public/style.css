@@ -104,41 +104,26 @@ a {
 /* ボタン */
 .round-btn {
   display: inline-block;
-  background-color: #9edb98;
-  color: #222;
-  border: 2px solid transparent;
+  background-color: #fff;
+  color: #d3c9c9;
+  border: 2px solid #d3c9c9;
   border-radius: 50%;
-  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  box-shadow: 0 1px 1px #0000004d;
 
-  width: 48px;
-  height: 48px;
-  line-height: 48px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   text-decoration: none;
 
   transition: .25s;
 }
 
-/* .btn {
-  display: inline-block;
-  width: 200px;
-  max-width: 100%;
-  padding: 15px 10px;
-  background-color: #9edb98;
-  border: 2px solid transparent;
-  box-shadow: 0 3px 6px rgba(0,0,0,.16);
-  color: #222;
-  font-size: 1.125rem;
-  text-align: center;
-  text-decoration: none;
-  transition: .25s;
-} */
-
-.btn:focus,
-.btn:hover {
-  background-color: #fff;
-  border-color: currentColor;
-  color: #9edb98;
+.round-btn:focus,
+.round-btn:hover {
+  background-color: #dce9df;
+  border-color: transparent;
+  color: #fff;
 }
 
 .rounded-btn {
