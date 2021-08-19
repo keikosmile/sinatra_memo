@@ -18,7 +18,7 @@ a {
 
 /* ヘッダー */
 .header {
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
   max-width: 1152px;
   margin: 0 auto;
 }
@@ -37,7 +37,9 @@ a {
 }
 
 /* コンテンツ */
-.content__table{
+.content__table,
+.content__text,
+.content__input {
   max-width: 1152px;
   margin: 0 auto;
   padding: 30px 15px;
