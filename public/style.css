@@ -7,8 +7,6 @@ body {
   color: #222;
   font-family: sans-serif;
   line-height: 1.5;
-  max-width: 1152px;
-  margin: 0 auto;
 }
 
 a {
@@ -21,6 +19,8 @@ a {
 /* ヘッダー */
 .header {
   border-bottom: 1px solid #ddd;
+  max-width: 1152px;
+  margin: 0 auto;
 }
 
 .header__inner {
@@ -38,10 +38,9 @@ a {
 
 /* コンテンツ */
 .content {
-  max-width: 95%;
+  max-width: 1152px;
+  margin: 0 auto;
   padding: 60px 15px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .content__title,
