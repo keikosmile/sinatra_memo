@@ -20,16 +20,10 @@ a {
 ==================== */
 
 /* ヘッダー */
-.header {
-  max-width: 1152px;
-  margin: 0 auto;
-}
-
 .header__inner {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  max-width: 1152px;
+  padding: 0 15px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
