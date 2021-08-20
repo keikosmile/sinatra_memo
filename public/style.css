@@ -268,6 +268,7 @@ a {
   width: 100%;
   text-align: center;
   border: 1px solid #ddd;
+  table-layout: fixed;
 }
 
 .table__header {
@@ -280,11 +281,11 @@ a {
 }
 
 .table__text {
-  padding: 15px;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   vertical-align: middle;
   overflow-wrap: break-word;
+  padding: 8px 12px;
 }
 
 .table__header:last-child,
