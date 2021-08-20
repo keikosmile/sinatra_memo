@@ -46,6 +46,6 @@ inputBody.addEventListener('input', () => {
   }
 });
 
-let evt = new Event('input');
+const evt = new Event('input');
 inputTitle.dispatchEvent(evt);
 inputBody.dispatchEvent(evt);
