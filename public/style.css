@@ -288,15 +288,6 @@ a {
   padding: 8px 12px;
 }
 
-.table__header:last-child,
-.table__text:last-child {
-  border-right-width: 0;
-}
-
-.table__body-row:last-child .table__text {
-  border-bottom-width: 0;
-}
-
 .table__body-row {
   cursor: pointer;
 }
