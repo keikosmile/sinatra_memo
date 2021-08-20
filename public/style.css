@@ -220,11 +220,6 @@ a {
   font-weight: bold;
 }
 
-/* ボーダーライン */
-.footer__border_top-grey {
-  border-top: 1px solid #777;
-}
-
 /* コピーライト */
 .footer__copyright {
   font-size: .75rem;
