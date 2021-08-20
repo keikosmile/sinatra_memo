@@ -42,20 +42,20 @@ a {
   flex: 1;
 }
 
-.content__table,
-.content__text,
-.content__input {
+.main__table,
+.main__text,
+.main__input {
   max-width: 1152px;
   margin: 0 auto;
   padding: 30px 15px;
 }
 
-.content__btn,
+.main__btn,
 .input-form__btn {
   text-align: center;
 }
 
-.content__top {
+.main__top {
   margin-top: 15px;
   padding-right: 10%;
   text-align: right;
