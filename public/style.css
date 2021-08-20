@@ -264,15 +264,10 @@ a {
 }
 
 /* テーブル */
-.table {
-  border: 1px solid #ddd;
-}
-
 .table__inner {
   width: 100%;
-  table-layout: fixed;
   text-align: center;
-  font-size: 1.125rem;
+  border: 1px solid #ddd;
 }
 
 .table__header {
