@@ -315,5 +315,5 @@ a {
 /* インプット */
 .input__text {
   font-size: 1.125rem;
-  text-align: right;
+  overflow-wrap: break-word;
 }
