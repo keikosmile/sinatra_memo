@@ -133,8 +133,8 @@ a {
   width: 200px;
   max-width: 100%;
   padding: 15px 10px;
-  background-color: #b5e7e1;
-  color: #555;
+  background-color: #db817a;
+  color: #fff;
   border: 2px solid transparent;
   box-shadow: 0 1px 1px #0000004d;
   border-radius: 10px;
@@ -148,7 +148,7 @@ a {
 .rounded-btn:hover {
   background-color: #fff;
   border-color: currentColor;
-  color: #b5e7e1;
+  color: #db817a;
 }
 
 .rounded-btn_warning {
@@ -160,17 +160,6 @@ a {
 .rounded-btn_warning:hover {
   border-color: #f1de00;
   color: #555;
-}
-
-.rounded-btn_alert {
-  background-color: #e25c00;
-  color: #fff;
-}
-
-.rounded-btn_alert:focus,
-.rounded-btn_alert:hover {
-  border-color: #e25c00;
-  color: #e25c00;
 }
 
 .rounded-btn:disabled {
