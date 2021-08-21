@@ -315,7 +315,6 @@ a {
   overflow-wrap: break-word;
 }
 
-.js-2input__judge-title,
-.js-2input__judge-body {
+.input__text_right {
   text-align: right;
 }
