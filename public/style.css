@@ -317,3 +317,8 @@ a {
   font-size: 1.125rem;
   overflow-wrap: break-word;
 }
+
+.js-2input__judge-title,
+.js-2input__judge-body {
+  text-align: right;
+}
