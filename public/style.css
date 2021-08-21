@@ -7,7 +7,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  color: #222;
+  color: #555;
   font-family: sans-serif;
   line-height: 1.5;
 }
@@ -134,10 +134,10 @@ a {
   max-width: 100%;
   padding: 15px 10px;
   background-color: #b5e7e1;
+  color: #555;
   border: 2px solid transparent;
   box-shadow: 0 1px 1px #0000004d;
   border-radius: 10px;
-  color: #222;
   font-size: 1.125rem;
   text-align: center;
   text-decoration: none;
@@ -153,13 +153,13 @@ a {
 
 .rounded-btn_warning {
   background-color: #f1de00;
-  color: #222;
+  color: #555;
 }
 
 .rounded-btn_warning:focus,
 .rounded-btn_warning:hover {
   border-color: #f1de00;
-  color: #222;
+  color: #555;
 }
 
 .rounded-btn_alert {
@@ -203,13 +203,14 @@ a {
 .level1-heading {
   padding: 30px 10px;
   background-color: #b5e7e1;
-  color: #222;
+  color: #555;
   font-size: 1.75rem;
   text-align: center;
 }
 
 .level2-heading {
   padding-bottom: 10px;
+  /* color: #555; */
   border-bottom: 4px solid #b5e7e1;
   font-size: 1.75rem;
   font-weight: bold;
