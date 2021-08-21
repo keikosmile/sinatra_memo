@@ -175,7 +175,7 @@ a {
 
 .rounded-btn:disabled {
   background-color: #bdbec0d5;
-  /* border-color: currentColor; */
+  border-color: currentColor;
   box-shadow: none;
   color:#fff;
 }
