@@ -174,8 +174,9 @@ a {
 }
 
 .rounded-btn:disabled {
-  background-color: #a2b3aa;
-  border-color: currentColor;
+  background-color: #bdbec0d5;
+  /* border-color: currentColor; */
+  box-shadow: none;
   color:#fff;
 }
 
