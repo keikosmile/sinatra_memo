@@ -248,7 +248,7 @@ a {
 .media_link:focus .media__text,
 .media_link:hover .media__title,
 .media_link:hover .media__text {
-  color: #e25c00;
+  color: #db817a;
   text-decoration: underline;
 }
 
