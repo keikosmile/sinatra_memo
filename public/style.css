@@ -122,9 +122,8 @@ a {
 
 .round-btn:focus,
 .round-btn:hover {
-  background-color: #dce9df;
-  border-color: transparent;
-  color: #fff;
+  background-color: #eefdfb;
+  border-color: #eefdfb;
 }
 
 .rounded-btn {
