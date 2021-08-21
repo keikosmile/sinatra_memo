@@ -135,7 +135,7 @@ a {
   padding: 15px 10px;
   background-color: #b5e7e1;
   border: 2px solid transparent;
-  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  box-shadow: 0 1px 1px #0000004d;
   border-radius: 10px;
   color: #222;
   font-size: 1.125rem;
@@ -225,7 +225,7 @@ a {
 
 /* メディア */
 .media {
-  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  box-shadow: 0 1px 1px #0000004d;
   display: flex;
   align-items: center;
 }
