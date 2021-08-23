@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 
-/* ベーススタイル
+/* =================
+      Base
 ==================== */
 
 body {
@@ -16,7 +17,8 @@ a {
   color: #3b6bad;
 }
 
-/* ブロック レイアウト
+/* =================
+      Layout
 ==================== */
 
 /* ヘッダー */
@@ -79,27 +81,95 @@ a {
   text-align: center;
 }
 
-/* エレメント
+/* =================
+      Module エレメント
 ==================== */
 
-/* テキストボックス */
-.rounded-input {
-  display: inline-block;
-  width: 100%;
-  border: 1px solid #999;
-  border-radius: 0.25em;
-  font-size: 1.125rem;
-  padding: 5px;
+/* メディア */
+.media {
+  box-shadow: 0 1px 1px #0000004d;
+  display: flex;
+  align-items: center;
 }
 
-/* テキストエリア */
-.rounded-textarea {
-  display: inline-block;
+.media__img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.media__title {
+  font-family: 'Yusei Magic';
+  font-size: 1.5rem;
+}
+
+.media__text {
+  color: #777;
+  font-size: 0.75rem;
+}
+
+.media_link {
+  color: currentColor;
+  text-decoration: none;
+  transition: .25s;
+}
+
+.media_link:focus,
+.media_link:hover {
+  opacity: .75;
+}
+
+.media_link:focus .media__title,
+.media_link:focus .media__text,
+.media_link:hover .media__title,
+.media_link:hover .media__text {
+  color: #db817a;
+  text-decoration: underline;
+}
+
+/* 見出し */
+.level1-heading {
+  padding: 20px 10px;
+  background-color: #b5e7e1;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.level2-heading {
+  padding-bottom: 10px;
+  border-bottom: 4px solid #b5e7e1;
+  font-size: 1.75rem;
+}
+
+/* テーブル */
+.table__inner {
   width: 100%;
-  border: 1px solid #999;
-  border-radius: 0.25em;
-  font-size: 1.125rem;
-  padding: 5px;
+  border: 1px solid #ddd;
+  table-layout: fixed;
+  vertical-align: middle;
+}
+
+.table__header {
+  background-color: #efefef;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  text-align: center;
+  padding: 4px 12px;
+}
+
+.table__text {
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  overflow-wrap: break-word;
+  padding: 8px 12px;
+}
+
+.table__body-row {
+  cursor: pointer;
+}
+
+.table__body-row:hover {
+  background-color: #eefdfb;
 }
 
 /* ボタン */
@@ -167,123 +237,6 @@ a {
   color:#fff;
 }
 
-.js-danger {
-  color: #FF0000;
-}
-
-/* アイコン */
-.before-icon::before {
-  display: inline-block;
-  margin-right: .3em;
-}
-
-.before-icon_chevron_up::before {
-  content: '';
-  width: .375em;
-  height: .375em;
-  border-bottom: .125em solid #999966;
-  border-left: .125em solid #999966;
-  transform: rotate(135deg) translateY(-50%);
-}
-
-/* 見出し */
-.level1-heading {
-  padding: 30px 10px;
-  background-color: #b5e7e1;
-  color: #555;
-  font-size: 1.75rem;
-  text-align: center;
-}
-
-.level2-heading {
-  padding-bottom: 10px;
-  /* color: #555; */
-  border-bottom: 4px solid #b5e7e1;
-  font-size: 1.75rem;
-  font-weight: bold;
-}
-
-/* コピーライト */
-.footer__copyright {
-  font-size: .75rem;
-}
-
-/* 複合エレメント
-==================== */
-
-/* メディア */
-.media {
-  box-shadow: 0 1px 1px #0000004d;
-  display: flex;
-  align-items: center;
-}
-
-.media__img {
-  width: 50px;
-  margin-right: 10px;
-}
-
-.media__title {
-  font-family: 'Yusei Magic';
-  font-size: 1.5rem;
-}
-
-.media__text {
-  color: #777;
-  font-size: 0.75rem;
-}
-
-.media_link {
-  color: currentColor;
-  text-decoration: none;
-  transition: .25s;
-}
-
-.media_link:focus,
-.media_link:hover {
-  opacity: .75;
-}
-
-.media_link:focus .media__title,
-.media_link:focus .media__text,
-.media_link:hover .media__title,
-.media_link:hover .media__text {
-  color: #db817a;
-  text-decoration: underline;
-}
-
-/* テーブル */
-.table__inner {
-  width: 100%;
-  border: 1px solid #ddd;
-  table-layout: fixed;
-  vertical-align: middle;
-}
-
-.table__header {
-  background-color: #efefef;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  font-weight: bold;
-  text-align: center;
-  padding: 4px 12px;
-}
-
-.table__text {
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  overflow-wrap: break-word;
-  padding: 8px 12px;
-}
-
-.table__body-row {
-  cursor: pointer;
-}
-
-.table__body-row:hover {
-  background-color: #eefdfb;
-}
-
 /* 水平ボタンリスト */
 .horizontal-btn {
   display: inline-block;
@@ -309,6 +262,46 @@ a {
   justify-content: center;
 }
 
+/* アイコン */
+.before-icon::before {
+  display: inline-block;
+  margin-right: .3em;
+}
+
+.before-icon_chevron_up::before {
+  content: '';
+  width: .375em;
+  height: .375em;
+  border-bottom: .125em solid #999966;
+  border-left: .125em solid #999966;
+  transform: rotate(135deg) translateY(-50%);
+}
+
+/* コピーライト */
+.footer__copyright {
+  font-size: .75rem;
+}
+
+/* テキストボックス */
+.rounded-input {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #999;
+  border-radius: 0.25em;
+  font-size: 1.125rem;
+  padding: 5px;
+}
+
+/* テキストエリア */
+.rounded-textarea {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #999;
+  border-radius: 0.25em;
+  font-size: 1.125rem;
+  padding: 5px;
+}
+
 /* インプット */
 .input__text {
   font-size: 1.125rem;
@@ -317,4 +310,12 @@ a {
 
 .input__text_right {
   text-align: right;
+}
+
+/* =================
+      State
+==================== */
+
+.js-danger {
+  color: #FF0000;
 }
