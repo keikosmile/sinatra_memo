@@ -107,21 +107,21 @@ a {
   font-size: 0.75rem;
 }
 
-.media_link {
+.media__link {
   color: currentColor;
   text-decoration: none;
   transition: .25s;
 }
 
-.media_link:focus,
-.media_link:hover {
+.media__link:focus,
+.media__link:hover {
   opacity: .75;
 }
 
-.media_link:focus .media__title,
-.media_link:focus .media__text,
-.media_link:hover .media__title,
-.media_link:hover .media__text {
+.media__link:focus .media__title,
+.media__link:focus .media__text,
+.media__link:hover .media__title,
+.media__link:hover .media__text {
   color: #db817a;
   text-decoration: underline;
 }
