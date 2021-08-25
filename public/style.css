@@ -14,7 +14,7 @@ body {
 }
 
 a {
-  color: #3b6bad;
+  color: #36a;
 }
 
 /*  ====================
@@ -107,7 +107,7 @@ a {
 }
 
 .media__text {
-  font-size: 0.75rem;
+  font-size: .75rem;
   color: #777;
 }
 
@@ -127,7 +127,7 @@ a {
 .media__link:hover .media__title,
 .media__link:hover .media__text {
   text-decoration: underline;
-  color: #db817a;
+  color: #d87;
 }
 
 /*  heading
@@ -136,12 +136,12 @@ a {
   padding: 20px 10px;
   font-size: 1.75rem;
   text-align: center;
-  background-color: #b5e7e1;
+  background-color: #cee;
 }
 
 .level2-heading {
   padding-bottom: 10px;
-  border-bottom: 4px solid #b5e7e1;
+  border-bottom: 4px solid #cee;
   font-size: 1.75rem;
 }
 
@@ -160,7 +160,7 @@ a {
   border-bottom: 1px solid #ddd;
   font-weight: bold;
   text-align: center;
-  background-color: #efefef;
+  background-color: #eee;
 }
 
 .table__text {
@@ -175,7 +175,7 @@ a {
 }
 
 .table__body-row:hover {
-  background-color: #eefdfb;
+  background-color: #eff;
 }
 
 /*  button
@@ -213,7 +213,7 @@ a {
   font-size: 1.125rem;
   text-align: center;
   text-decoration: none;
-  background-color: #db817a;
+  background-color: #d87;
   color: #fff;
   transition: .25s;
   cursor: pointer;
@@ -223,16 +223,16 @@ a {
 .rounded-btn:hover {
   background-color: #fff;
   border-color: currentColor;
-  color: #db817a;
+  color: #d87;
 }
 
 .rounded-btn_warning {
-  background-color: #d4ca5a;
+  background-color: #dc5;
 }
 
 .rounded-btn_warning:focus,
 .rounded-btn_warning:hover {
-  color: #d4ca5a;
+  color: #dc5;
 }
 
 .rounded-btn:disabled {
@@ -278,8 +278,8 @@ a {
   content: '';
   width: .375em;
   height: .375em;
-  border-bottom: .125em solid #999966;
-  border-left: .125em solid #999966;
+  border-bottom: .125em solid #996;
+  border-left: .125em solid #996;
   transform: rotate(135deg) translateY(-50%);
 }
 
@@ -294,6 +294,7 @@ a {
 .rounded-input {
   display: inline-block;
   width: 100%;
+  max-width: 680px;
   padding: 5px;
   border: 1px solid #999;
   border-radius: 0.25em;
@@ -316,7 +317,7 @@ a {
   width: 100%;
   padding: 5px;
   border: 1px solid #999;
-  border-radius: 0.25em;
+  border-radius: .25em;
   font-size: 1.125rem;
 }
 
@@ -325,5 +326,5 @@ a {
     ==================== */
 
 .js-danger {
-  color: #FF0000;
+  color: #F00;
 }
