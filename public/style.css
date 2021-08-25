@@ -1,39 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Yusei+Magic&display=swap');
 
-/* =================
-      Base
-==================== */
+/*  ====================
+    Base
+    ==================== */
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  color: #555;
   font-family: sans-serif;
   line-height: 1.5;
+  color: #555;
 }
 
 a {
   color: #3b6bad;
 }
 
-/* =================
-      Layout
-==================== */
+/*  ====================
+    Layout
+    ==================== */
 
-/* ヘッダー */
+/*  header
+    ==================== */
 .header__inner {
+  display: flex;
   max-width: 1152px;
+  height: 72px;
   padding: 0 15px;
   margin: 0 auto;
-  display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  height: 72px;
 }
 
-/* メイン */
+/*  main
+    ==================== */
 .main {
   flex: 1;
 }
@@ -42,8 +44,8 @@ a {
 .main__text,
 .main__input {
   max-width: 1152px;
-  margin: 0 auto;
   padding: 30px 15px;
+  margin: 0 auto;
 }
 
 .main__btn,
@@ -66,7 +68,8 @@ a {
   margin-bottom: 10px;
 }
 
-/* フッター */
+/*  footer
+    ==================== */
 .footer {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -81,15 +84,16 @@ a {
   text-align: center;
 }
 
-/* =================
-      Module エレメント
-==================== */
+/*  ====================
+    Module
+    ==================== */
 
-/* メディア */
+/*  media
+    ==================== */
 .media {
-  box-shadow: 0 1px 1px #0000004d;
   display: flex;
   align-items: center;
+  box-shadow: 0 1px 1px #0000004d;
 }
 
 .media__img {
@@ -103,13 +107,13 @@ a {
 }
 
 .media__text {
-  color: #777;
   font-size: 0.75rem;
+  color: #777;
 }
 
 .media__link {
-  color: currentColor;
   text-decoration: none;
+  color: currentColor;
   transition: .25s;
 }
 
@@ -122,16 +126,17 @@ a {
 .media__link:focus .media__text,
 .media__link:hover .media__title,
 .media__link:hover .media__text {
-  color: #db817a;
   text-decoration: underline;
+  color: #db817a;
 }
 
-/* 見出し */
+/*  heading
+    ==================== */
 .level1-heading {
   padding: 20px 10px;
-  background-color: #b5e7e1;
   font-size: 1.75rem;
   text-align: center;
+  background-color: #b5e7e1;
 }
 
 .level2-heading {
@@ -140,7 +145,8 @@ a {
   font-size: 1.75rem;
 }
 
-/* テーブル */
+/*  table
+    ==================== */
 .table__inner {
   width: 100%;
   border: 1px solid #ddd;
@@ -149,19 +155,19 @@ a {
 }
 
 .table__header {
-  background-color: #efefef;
+  padding: 4px 12px;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   font-weight: bold;
   text-align: center;
-  padding: 4px 12px;
+  background-color: #efefef;
 }
 
 .table__text {
+  padding: 8px 12px;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   overflow-wrap: break-word;
-  padding: 8px 12px;
 }
 
 .table__body-row {
@@ -172,28 +178,28 @@ a {
   background-color: #eefdfb;
 }
 
-/* ボタン */
+/*  button
+    ==================== */
 .round-btn {
   display: inline-block;
-  background-color: #fff;
-  color: #d3c9c9;
-  border: 2px solid #d3c9c9;
-  border-radius: 50%;
-  box-shadow: 0 1px 1px #0000004d;
-
   width: 40px;
   height: 40px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px #0000004d;
   line-height: 40px;
   text-align: center;
   text-decoration: none;
-
+  background-color: #fff;
+  color: #ddd;
   transition: .25s;
 }
 
 .round-btn:focus,
 .round-btn:hover {
-  background-color: #eefdfb;
-  border-color: #eefdfb;
+  background-color: #ddd;
+  border-color:  #ddd;
+  color: #fff;
 }
 
 .rounded-btn {
@@ -201,14 +207,14 @@ a {
   width: 200px;
   max-width: 100%;
   padding: 15px 10px;
-  background-color: #db817a;
-  color: #fff;
   border: 2px solid transparent;
   box-shadow: 0 1px 1px #0000004d;
   border-radius: 10px;
   font-size: 1.125rem;
   text-align: center;
   text-decoration: none;
+  background-color: #db817a;
+  color: #fff;
   transition: .25s;
   cursor: pointer;
 }
@@ -221,25 +227,22 @@ a {
 }
 
 .rounded-btn_warning {
-  background-color: #f1de00;
-  color: #555;
+  background-color: #d4ca5a;
 }
 
 .rounded-btn_warning:focus,
 .rounded-btn_warning:hover {
-  border-color: #f1de00;
-  color: #555;
+  color: #d4ca5a;
 }
 
 .rounded-btn:disabled {
-  background-color: #bdbec0d5;
-  border-color: #bdbec0d5;
+  background-color: #ddd;
   box-shadow: none;
-  color:#fff;
   pointer-events: none
 }
 
-/* 水平ボタンリスト */
+/*  horizontal button list
+    ==================== */
 .horizontal-btn {
   display: inline-block;
 }
@@ -264,7 +267,8 @@ a {
   justify-content: center;
 }
 
-/* アイコン */
+/*  icon
+    ==================== */
 .before-icon::before {
   display: inline-block;
   margin-right: .3em;
@@ -279,32 +283,23 @@ a {
   transform: rotate(135deg) translateY(-50%);
 }
 
-/* コピーライト */
+/*  copyright
+    ==================== */
 .footer__copyright {
   font-size: .75rem;
 }
 
-/* テキストボックス */
+/*  input form
+    ==================== */
 .rounded-input {
   display: inline-block;
   width: 100%;
+  padding: 5px;
   border: 1px solid #999;
   border-radius: 0.25em;
   font-size: 1.125rem;
-  padding: 5px;
 }
 
-/* テキストエリア */
-.rounded-textarea {
-  display: inline-block;
-  width: 100%;
-  border: 1px solid #999;
-  border-radius: 0.25em;
-  font-size: 1.125rem;
-  padding: 5px;
-}
-
-/* インプット */
 .input__text {
   font-size: 1.125rem;
   overflow-wrap: break-word;
@@ -314,9 +309,20 @@ a {
   text-align: right;
 }
 
-/* =================
-      State
-==================== */
+/*  textarea
+    ==================== */
+.rounded-textarea {
+  display: inline-block;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #999;
+  border-radius: 0.25em;
+  font-size: 1.125rem;
+}
+
+/*  ====================
+    State
+    ==================== */
 
 .js-danger {
   color: #FF0000;
