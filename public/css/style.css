@@ -505,7 +505,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5.334%;
 }
 
 .l-header__link > a {
