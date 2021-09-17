@@ -1,4 +1,4 @@
-document.querySelectorAll('.js-table__row-link').forEach(row => {
+document.querySelectorAll('.js-table-tbody-tr').forEach(row => {
   row.addEventListener('click', () => {
     location = row.getAttribute('data-href');
   })

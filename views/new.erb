@@ -1,31 +1,42 @@
-<div class="main__title">
-  <h1 class="level1-heading">メモ新規作成</h1>
-</div>
-
-<div class="main__input">
-  <div class="js-2input input-form">
-    <form action="/memos/new" method="post">
-
-      <div class ="input">
-        <h2 class="input__label level2-heading">タイトル</h2>
-        <input class="js-2input__input-title input__input rounded-input" type="text" name="title" value="">
-        <div class="js-2input__judge-title input__text_right">
-          <span class="js-2input__count-title">0</span>/30字
-        </div>
-      </div>
-
-      <div class ="input">
-        <h2 class="input__label level2-heading">内容</h2>
-        <textarea class="js-2input__input-body input__input rounded-textarea" name="body" rows="15" value=""></textarea>
-        <div class="js-2input__judge-body input__text_right">
-          <span class="js-2input__count-body">0</span>/500字
-        </div>
-      </div>
-
-      <div class="input-form__btn">
-        <input class="js-2input__btn rounded-btn" type="submit" value="メモ保存">
-      </div>
-    </form>
-    <script src="/js/input_limit.js"></script>
+<div class="c-section">
+  <div class="c-flex -center">
+    <h1 class="c-heading">メモ新規作成</h1>
   </div>
 </div>
+
+<form action="/memos/new" method="post">
+
+  <div class="c-section">
+    <fieldset class="p-field -required">
+      <label class="c-label" for="title">
+        タイトル
+      </label>
+      <div class="c-unit">
+        <input class="c-input-text js-input-title" type="text" name="title" value="">
+      </div>
+      <div class="c-label-msg p-field__label-msg js-input-judge-title">
+        <p class="js-input-count-title">0</p>/30字
+      </div>
+    </fieldset>
+
+    <fieldset class="p-field">
+      <label class="c-label" for="body">
+        内容
+      </label>
+      <div class="c-unit">
+        <textarea class="c-textarea js-input-body" name="body" value=""></textarea>
+      </div>
+      <div class="c-label-msg p-field__label-msg js-input-judge-body">
+        <p class="js-input-count-body">0</p>/500字
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="c-section">
+    <div class="c-flex -center">
+      <input class="c-button js-input-btn" type="submit" value="メモ保存">
+    </div>
+  </div>
+
+</form>
+<script src="/js/input_limit.js"></script>

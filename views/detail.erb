@@ -1,38 +1,38 @@
-<div class="main__title">
-  <h1 class="level1-heading">メモ表示</h1>
-</div>
-
-<div class="main__text">
-  <div class="input">
-    <h2 class="input__label level2-heading">メモID</h2>
-    <p class="input__text"><%= @memo_id %></p>
-  </div>
-
-  <div class="input">
-    <h2 class="input__label level2-heading">タイトル</h2>
-    <p class="input__text"><%= h @memo["title"] %></p>
-  </div>
-
-  <div class="input">
-    <h2 class="input__label level2-heading">内容</h2>
-    <p class="input__text"><%= h @memo["body"] %></p>
+<div class="c-section">
+  <div class="c-flex -center">
+    <div class="c-heading">メモ表示</div>
   </div>
 </div>
 
-<div class="main__btn">
-  <div class="horizontal-btn">
-    <ul class="horizontal-btn-list">
-      <li class="horizontal-btn-list__item">
-        <form action="/memos/<%= @memo_id %>/edit" method="get">
-          <input class="horizontal-btn-list__btn rounded-btn rounded-btn_warning" type="submit" value="メモ変更">
-        </form>
-      </li>
-      <li class="horizontal-btn-list__item">
-        <form action="/memos/<%= @memo_id %>" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <input class="horizontal-btn-list__btn rounded-btn" type="submit" value="メモ削除">
-        </form>
-      </li>
-    </ul>
+<div class="c-section">
+  <fieldset class="p-field">
+    <label class="c-label for="memo_id">メモID</label>
+    <p class="c-sentence"><%= @memo_id %></p>
+  </fieldset>
+
+  <fieldset class="p-field">
+    <label class="c-label for="title">タイトル</label>
+    <p class="c-sentence"><%= h @memo["title"] %></p>
+  </fieldset>
+
+  <fieldset class="p-field">
+    <label class="c-label for="body">内容</label>
+    <p class="c-sentence"><%= h @memo["body"] %></p>
+  </fieldset>
+</div>
+
+<div class="c-section">
+  <div class="c-flex -center">
+    <div class="c-button--horizontal">
+      <form action="/memos/<%= @memo_id %>/edit" method="get">
+        <input class="c-button" type="submit" value="メモ変更">
+      </form>
+    </div>
+    <div class="c-button--horizontal">
+      <form action="/memos/<%= @memo_id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input class="c-button" type="submit" value="メモ削除">
+      </form>
+    </div>
   </div>
 </div>

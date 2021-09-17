@@ -1,36 +1,49 @@
-<div class="main__title">
-  <h1 class="level1-heading">メモ変更</h1>
-</div>
-
-<div class="main__input">
-
-  <div class="input">
-    <h2 class="input__label level2-heading">メモID</h2>
-    <p class="input__text"><%= @memo_id %></p>
-  </div>
-
-  <div class="js-2input input-form">
-    <form action="/memos/<%= @memo_id %>" method="post">
-
-      <div class="input">
-        <h2 class="input__label level2-heading">タイトル</h2>
-        <input class="js-2input__input-title input__input rounded-input" type="text" name="title" value="<%= @memo["title"] %>">
-        <div class="js-2input__judge-title input__text_right">
-          <span class="js-2input__count-title">0</span>/30字</div>
-      </div>
-
-      <div class="input">
-        <h2 class="input__label level2-heading">内容</h2>
-        <textarea class="js-2input__input-body input__input rounded-textarea" name="body" rows="15"><%= @memo["body"] %></textarea>
-        <div class="js-2input__judge-body input__text_right">
-          <span class="js-2input__count-body">0</span>/500字</div>
-      </div>
-
-      <div class="input-form__btn">
-        <input type="hidden" name="_method" value="PATCH">
-        <input class="js-2input__btn rounded-btn rounded-btn_warning" type="submit" value="メモ変更">
-      </div>
-    </form>
-    <script src="/js/input_limit.js"></script>
+<div class="c-section">
+  <div class="c-flex -center">
+    <div class="c-heading">メモ変更</div>
   </div>
 </div>
+
+<div class="c-section">
+  <fieldset class="p-field">
+    <label class="c-label for="memo_id">メモID</label>
+    <p class="c-sentence"><%= @memo_id %></p>
+  </fieldset>
+</div>
+
+<form action="/memos/<%= @memo_id %>" method="post">
+  <div class="c-section">
+    <fieldset class="p-field -required">
+      <label class="c-label" for="title">
+        タイトル
+      </label>
+      <div class="c-unit">
+        <input class="c-input-text js-input-title" type="text" name="title" value="<%= @memo["title"] %>">
+      </div>
+      <div class="c-label-msg p-field__label-msg js-input-judge-title">
+        <p class="js-input-count-title">0</p>/30字
+      </div>
+    </fieldset>
+
+    <fieldset class="p-field">
+      <label class="c-label" for="body">
+        内容
+      </label>
+      <div class="c-unit">
+        <textarea class="c-textarea js-input-body" name="body"><%= @memo["body"] %></textarea>
+      </div>
+      <div class="c-label-msg p-field__label-msg js-input-judge-body">
+        <p class="js-input-count-body">0</p>/500字
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="c-section">
+    <div class="c-flex -center">
+      <input type="hidden" name="_method" value="PATCH">
+      <input class="c-button js-input-btn" type="submit" value="メモ変更">
+    </div>
+  </div>
+
+</form>
+<script src="/js/input_limit.js"></script>

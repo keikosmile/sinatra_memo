@@ -1,8 +1,8 @@
-const inputTitle = document.querySelector('.js-2input__input-title');
-const inputBody = document.querySelector('.js-2input__input-body');
+const inputTitle = document.querySelector('.js-input-title');
+const inputBody = document.querySelector('.js-input-body');
 
 const enableButton = (isValidCount) => {
-  const button = document.querySelector('.js-2input__btn');
+  const button = document.querySelector('.js-input-btn');
   if (isValidCount) {
     button.removeAttribute('disabled');
   } else {
@@ -17,14 +17,14 @@ inputTitle.addEventListener('input', () => {
   const isValidBodyCount = inputBodyCount >= 0 && inputBodyCount < 500;
   enableButton(isValidTitleCount && isValidBodyCount);
 
-  const countTitle = document.querySelector('.js-2input__count-title');
+  const countTitle = document.querySelector('.js-input-count-title');
   countTitle.innerText = inputTitleCount;
 
-  const judgeTitle = document.querySelector('.js-2input__judge-title');
+  const judgeTitle = document.querySelector('.js-input-judge-title');
   if (isValidTitleCount) {
-    judgeTitle.classList.remove('js-danger');
+    judgeTitle.classList.remove('-danger');
   } else {
-    judgeTitle.classList.add('js-danger');
+    judgeTitle.classList.add('-danger');
   }
 });
 
@@ -35,14 +35,14 @@ inputBody.addEventListener('input', () => {
   const isValidBodyCount = inputBodyCount >= 0 && inputBodyCount < 500;
   enableButton(isValidTitleCount && isValidBodyCount);
 
-  const countBody = document.querySelector('.js-2input__count-body');
+  const countBody = document.querySelector('.js-input-count-body');
   countBody.innerText = inputBodyCount;
 
-  const judgeBody = document.querySelector('.js-2input__judge-body');
+  const judgeBody = document.querySelector('.js-input-judge-body');
   if (isValidBodyCount) {
-    judgeBody.classList.remove('js-danger');
+    judgeBody.classList.remove('-danger');
   } else {
-    judgeBody.classList.add('js-danger');
+    judgeBody.classList.add('-danger');
   }
 });
 

@@ -5,13 +5,14 @@
 ## 1. ファイルをダウンロードする
 ### ファイル構成
 - public/
-  - images/
-      - memo.jpg
+  - css/
+      - style.css
+  - img/
+      - memo.ico
+      - post-it.jpg
   - js/
       - input_limit.js
       - table_click.js
-  - reset.css
-  - style.css
 - views/
   - about.erb
   - detail.erb

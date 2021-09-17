@@ -1,46 +1,40 @@
-<div class="main__title">
-  <h1 class="level1-heading">メモ一覧</h1>
-</div>
-
-<div class="main__table">
-  <div class="table">
-    <table class="table__inner">
-
-      <thead class="table__headers">
-        <tr class="table__header-row">
-          <th class="table__header table__header_memo-id">メモID</th>
-          <th class="table__header">タイトル</th>
-          <th class="table__header">内容</th>
-        </tr>
-      </thead>
-
-      <tbody class="table__body">
-        <% unless @memos.empty? %>
-          <% @memos.each do |memo_id, title_body| %>
-            <% title = title_body["title"] %>
-            <% body = title_body["body"] %>
-            <tr class="table__body-row js-table__row-link" data-href="/memos/<%= memo_id %>">
-              <td class="table__text"><%= memo_id[0, 8] %></td>
-              <td class="table__text"><%= h title %></td>
-              <td class="table__text"><%= h body %></td>
-            </tr>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
-    <script src="/js/table_click.js"></script>
+<div class="c-section">
+  <div class="c-flex -center">
+    <h1 class="c-heading">メモ一覧</h1>
   </div>
 </div>
 
-<div class="main__btn">
-  <form action="/memos/new" method="get">
-    <input class="rounded-btn" type="submit" value="メモ新規作成">
-  </form>
+<div class="c-section">
+  <table class="c-table">
+    <thead>
+      <tr>
+        <th>メモID</th>
+        <th>タイトル</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% unless @memos.empty? %>
+        <% @memos.each do |memo_id, title_body| %>
+          <% title = title_body["title"] %>
+          <% body = title_body["body"] %>
+            <tr class="js-table-tbody-tr" data-href="/memos/<%= memo_id %>">
+              <td><%= memo_id[0, 8] %></td>
+              <td><%= h title %></td>
+              <td><%= h body %></td>
+            </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+<script src="/js/table_click.js"></script>
 
-<div class="main__top">
-  <span class="before-icon before-icon_chevron_up">
-    <a class="table-top" href="#page-top">ページの先頭へ戻る</a>
-  </span>
-</div>
 
+<form action="/memos/new" method="get">
+  <div class="c-section">
+    <div class="c-flex -center">
+      <input class="c-button" type="submit" value="メモ新規作成">
+    </div>
+  </div>
+</form>

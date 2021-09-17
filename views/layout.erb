@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <meta name="description" content="Memo application you can share.">
     <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/img/memo.ico">
+    <link rel="stylesheet" href="/css/style.css">
     <title><%= settings.app_title %></title>
-    <link rel="stylesheet" href="/reset.css">
-    <link rel="stylesheet" href="/style.css?v=2">
   </head>
 
   <body>
-    <header class="header" id="page-top">
-      <div class="header__inner">
-
-        <div class="header__media">
-          <a class="media media__link" href="/">
-            <img class = "media__img" src="/images/memo.jpg" alt="memo photo.">
-            <div class="media__body">
-              <div class="media__title">
-                <%= settings.app_title %>
-              </div>
-              <div class="media__text">
-                メモを共有しよう
-              </div>
+    <div class="l-wrap">
+      <header class="l-header">
+        <div class="l-header__inner">
+          <a href="/" class="c-media">
+            <div class="c-media__img">
+              <img width="60px" height="60px" src="/img/post-it.jpg">
             </div>
+            <p class="c-media__body">メモアプリ</p>
           </a>
+          <div class="l-header__link">
+            <a href="/about">
+              <span>
+                メモアプリについて
+              </span>
+            </a>
+          </div>
         </div>
+      </header>
 
-        <div class="header__btn">
-          <a class="round-btn" href="/about">?</a>
+      <main class="l-main">
+        <div class="l-inner">
+          <%= yield %>
         </div>
-      </div>
-    </header>
+      </main>
 
-    <main class="main">
-      <%= yield %>
-    </main>
+      <footer class="l-footer">
+        <small class="l-footer__copyright">&copy; 2021 keikosmile All Rights Reserved.</small>
+        </small>
+      </footer>
 
-    <footer class="footer">
-      <div class="footer__inner">
-        <small class="footer__copyright">&copy; 2021 keikosmile All Rights Reserved.</small>
-      </div>
-    </footer>
-
+    </div>
   </body>
 </html>
