@@ -34,6 +34,7 @@
 - Gemfile
 - Gemfile.lock
 - main.rb
+- memo_db.rb
 - README.md
 
 ### 2. gem をインストールする
