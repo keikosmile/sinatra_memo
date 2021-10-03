@@ -16,9 +16,9 @@ class MemoDB
       end
     end
 
-    def select(memo_id)
+    def select(id)
       memos = MemoDB.read_memos
-      memos[memo_id]
+      memos[id]
     end
 
     def select_all
@@ -31,15 +31,15 @@ class MemoDB
       MemoDB.write_memos(memos)
     end
 
-    def delete(memo_id)
+    def delete(id)
       memos = MemoDB.read_memos
-      memos.delete(memo_id)
+      memos.delete(id)
       MemoDB.write_memos(memos)
     end
 
-    def update(memo_id, title, body)
+    def update(id, title, body)
       memos = MemoDB.read_memos
-      memos[memo_id] = { 'title' => title, 'body' => body }
+      memos[id] = { 'title' => title, 'body' => body }
       MemoDB.write_memos(memos)
     end
   end

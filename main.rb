@@ -31,25 +31,25 @@ post '/memos/new' do
   redirect '/'
 end
 
-get '/memos/:memo_id' do
-  @memo_id = params[:memo_id]
-  @memo = MemoDB.select(@memo_id)
+get '/memos/:id' do
+  @id = params[:id]
+  @memo = MemoDB.select(@id)
   erb :detail
 end
 
-delete '/memos/:memo_id' do
-  MemoDB.delete(params[:memo_id])
+delete '/memos/:id' do
+  MemoDB.delete(params[:id])
   redirect '/'
 end
 
-get '/memos/:memo_id/edit' do
-  @memo_id = params[:memo_id]
-  @memo = MemoDB.select(@memo_id)
+get '/memos/:id/edit' do
+  @id = params[:id]
+  @memo = MemoDB.select(@id)
   erb :edit
 end
 
-patch '/memos/:memo_id' do
-  MemoDB.update(params[:memo_id], params[:title], params[:body])
+patch '/memos/:id' do
+  MemoDB.update(params[:id], params[:title], params[:body])
   redirect '/'
 end
 
